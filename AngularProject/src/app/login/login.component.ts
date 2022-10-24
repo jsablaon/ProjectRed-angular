@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component } from '@angular/core';
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  template: `
+    <signin></signin>
+    `
 })
-export class LoginComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class LoginComponent {
+  constructor() { console.clear(); }
+}
+@Component({
+  selector: 'signin',
+  template: `<h1>{{title}}</h1>
+   <google-signin></google-signin>`
+})
+export class SignInComponent {
+  title     = "signin page";
+  constructor() { console.clear(); }
 }

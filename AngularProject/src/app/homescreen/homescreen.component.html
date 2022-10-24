@@ -1,9 +1,17 @@
-<h1>Browse Stores</h1>
-<label>Search: </label><input type="text">
-<ul>
+<h1>{{currentUser}}</h1>
+<div *ngIf="!loggedIn">
+  <signin></signin>
+</div>
+<div *ngIf="loggedIn">
+  <h1>Browse Stores</h1>
+  <label>Search: </label><input type="text">
+  <ul>
     <li>Store 1</li>
     <li>Store 2</li>
     <li>Store 3</li>
     <li>Store 4</li>
     <li>Store 5</li>
-</ul>
+  </ul>
+  <app-logout></app-logout>
+</div>
+
