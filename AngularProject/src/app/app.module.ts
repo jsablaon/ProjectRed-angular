@@ -7,9 +7,8 @@ import { HomescreenComponent } from './homescreen/homescreen.component';
 import { CartComponent } from './cart/cart.component';
 import { AccountComponent } from './account/account.component';
 
-import { SignInComponent, LoginComponent}  from './login/login.component';  
-import { GoogleSigninComponent }  from './google.signin';
-import { LogoutComponent } from './logout/logout.component';
+import { HttpClientModule } from '@angular/common/http';
+import { OrderHistoryComponent } from './order-history/order-history.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +16,12 @@ import { LogoutComponent } from './logout/logout.component';
     HomescreenComponent,
     CartComponent,
     AccountComponent,
-    GoogleSigninComponent,
-    SignInComponent,
-    LoginComponent,
-    LogoutComponent,
+    OrderHistoryComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

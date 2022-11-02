@@ -1,24 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Gift } from '../gift';
+import { TestListService } from '../test-list.service';
+
 @Component({
   selector: 'app-homescreen',
   templateUrl: './homescreen.component.html',
   styleUrls: ['./homescreen.component.css']
 })
 export class HomescreenComponent implements OnInit {
-  loggedIn: boolean = false;
-  currentUser: string = 'Please Log In';
+  gifts: Gift[] = [];
 
-  constructor() { }
+
+  constructor(private testService: TestListService) { }
 
   ngOnInit(): void {
-    if(sessionStorage.getItem('ID:') === null){
-      this.loggedIn = false;
-    }
-      else if(sessionStorage.getItem('ID:').length > 5){
-      this.loggedIn = true;
-      this.currentUser = 'Welcome ' + sessionStorage.getItem('Name:');
-    }
+    this.getGifts();
+  }
+
+  getGifts(): void {
+    this.testService.getGifts()
+    .subscribe(gifts => this.gifts = gifts);
+    console.log(this.gifts);
   }
 
 }
