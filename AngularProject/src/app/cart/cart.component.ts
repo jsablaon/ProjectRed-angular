@@ -1,4 +1,4 @@
-import { Component, SimpleChanges, OnInit, OnChanges, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Item } from '../item';
 import { ItemService } from '../item.service'
@@ -23,13 +23,12 @@ export class CartComponent implements OnInit {
   getItems(): void {
     this.subtotal = 0;
     this.itemService.getItems().subscribe((items): Item[] => {
-      // items.forEach(this.getSubtotal);
+      
+      //calculates subtotal
+      items.forEach((item) => {
+        this.subtotal += item.price * item.qty;
+      });
 
-      //runs once for each item in the cart
-      for(let i = 0; i < items.length; i++){ 
-        this.subtotal += items[i].price * items[i].qty;
-      }
-      // this.x += 1;
       return this.items = items;
     });
   }
