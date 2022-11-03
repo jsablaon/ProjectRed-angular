@@ -1,7 +1,4 @@
 <h1>My Cart</h1>
-<!-- <div ng-app="" ng-init="Sub =0">
-    <p>{{Sub}}</p>
-</div> -->
     <ul class="items">
         <li *ngFor="let item of items">
         
@@ -10,9 +7,10 @@
             </a>
             <div>
                 <label for="item-qty">Qty: </label>
-                <input id="item-qty" [(ngModel)]="item.qty" placeholder="Item qty" (ngModelChange)="getItems();"/>        
+                <input id="item-qty" [(ngModel)]="item.qty" 
+                placeholder="Item qty" (ngModelChange)="getItems();"/>        
             </div>
-            <label id={{item.id}}>{{(item.price * item.qty).toFixed(2)}}</label>
+            <label>Price: ${{(item.price * item.qty).toFixed(2)}}</label>
             
         </li>        
     </ul>
@@ -21,6 +19,6 @@
     <p>Tax: ${{(subtotal * .095).toFixed(2)}}</p>
     <p>Subtotal: ${{subtotal.toFixed(2)}}</p>
     <p>Delivery Fee: $15.55</p>
-    <strong><p>Total: ${{(subtotal * .095 + subtotal + 15.55).toFixed(2)}}</p></strong>
+    <strong><p>Total: ${{(subtotal * 1.095 + 15.55).toFixed(2)}}</p></strong>
 
 <button>Checkout</button>
