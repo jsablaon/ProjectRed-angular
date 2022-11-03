@@ -1,5 +1,5 @@
 <h1>My items</h1>
-
+<!-- <div ng-app"" ng-init="subtotal=0"> -->
 <ul class="items">
     <li *ngFor="let item of items">
        
@@ -10,16 +10,21 @@
         <div>
             <label for="item-qty">Qty: </label>
             <input id="item-qty" [(ngModel)]="item.qty" placeholder="Item qty"/>
-            
+            <script>
+                // subtotal += items.price;
+            </script>
+            <!-- {{subtotal = subtotal + item.price}} -->
+        
         </div>
-        <label>Price: {{item.price * item.qty}}</label>
+        <label id="one">Price: {{(item.price * item.qty).toFixed(2)}}</label>
         
     </li>        
 </ul>
-
+<!-- </div> -->
 
 <p>Tax: $x.xx</p>
-<p>Subtotal: $x.xx</p>
+<p>Subtotal: {{subtotal.toFixed(2)}}</p>
 <p>Delivery Fee: $x.xx</p>
 <strong><p>Total: $x.xx</p></strong>
+
 <button>Checkout</button>

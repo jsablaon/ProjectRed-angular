@@ -10,6 +10,9 @@ import { ItemService } from '../item.service'
 })
 export class CartComponent implements OnInit {
   items: Item[] = [];
+  subtotal:number = 0;
+  tax:number = 0;
+  // x:number = 0;
   constructor(private itemService: ItemService) { }
 
   ngOnInit(): void {
@@ -17,7 +20,18 @@ export class CartComponent implements OnInit {
   }
 
   getItems(): void {
-    this.itemService.getItems().subscribe(items => this.items = items)
+    this.itemService.getItems().subscribe((items): Item[] => {
+      // items.forEach(this.getSubtotal);
+      for(let i = 0; i < items.length; i++){ 
+        this.subtotal += items[i].price * items[i].qty;
+      }
+      // this.x += 1;
+      return this.items = items;
+    });
   }
+
+  // getSubtotal(item) {
+  //   this.subtotal = 4;
+  // }
 
 }
