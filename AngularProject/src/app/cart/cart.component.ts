@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { Component, SimpleChanges, OnInit, OnChanges, Input } from '@angular/core';
 
 import { Item } from '../item';
 import { ItemService } from '../item.service'
@@ -13,7 +13,7 @@ import { ItemService } from '../item.service'
 export class CartComponent implements OnChanges, OnInit {
   items: Item[] = [];
   subtotal:number = 0;
-  @Input() qty: number;
+  // @Input() qty: number;
   tax:number = 0;
   Sub:number = 0;
   // x:number = 0;
@@ -23,8 +23,8 @@ export class CartComponent implements OnChanges, OnInit {
     this.getItems();
   }
 
-  ngOnChanges(): void{
-    // this.subtotal = 0;
+  ngOnChanges(changes: SimpleChanges) {
+    
     //  //runs once for each item in the cart
     //  for(let i = 0; i < this.items.length; i++){ 
     //   this.subtotal += this.items[i].price * this.items[i].qty;
@@ -32,6 +32,7 @@ export class CartComponent implements OnChanges, OnInit {
   }
 
   getItems(): void {
+    this.subtotal = 0;
     this.itemService.getItems().subscribe((items): Item[] => {
       // items.forEach(this.getSubtotal);
 
@@ -44,8 +45,16 @@ export class CartComponent implements OnChanges, OnInit {
     });
   }
   
-  // getSubtotal() {
-    
+  findSubTotal() {
+    this.subtotal = 0;
+    for(let i = 0; i < this.items.length; i++){ 
+    let sub = Number(document.getElementById(i.toString()).getAttribute("value"));
+         
+      this.subtotal += sub;
+      }
+    // this.items.forEach(function (item) {
+    //   this.subtotal += item.price * item.qty;
+    // });
   //    for(let i = 0; i < this.items.length; i++){ 
   //     let sub = Number(document.getElementById(i.toString()).getAttribute("value"));
      
@@ -53,7 +62,11 @@ export class CartComponent implements OnChanges, OnInit {
   //    }
   //     return this.Sub;
     
-  // }
+  }
+
+  mySub(Item){
+    
+  }
 
 
 }

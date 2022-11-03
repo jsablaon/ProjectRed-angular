@@ -10,7 +10,7 @@
             </a>
             <div>
                 <label for="item-qty">Qty: </label>
-                <input id="item-qty" [(ngModel)]="item.qty" placeholder="Item qty"/>        
+                <input id="item-qty" [(ngModel)]="item.qty" placeholder="Item qty" (ngModelChange)="getItems();"/>        
             </div>
             <label id={{item.id}}>{{(item.price * item.qty).toFixed(2)}}</label>
             
