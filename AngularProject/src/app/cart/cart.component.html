@@ -1,12 +1,24 @@
-<h1>My items</h1>
-<ul>
-    <li>item 1 -- $x.xx</li>
-    <li>item 2 -- $x.xx</li>
-    <li>item 3 -- $x.xx</li>
-    <li>item 4 -- $x.xx</li>
-    <li>item 5 -- $x.xx</li>
-</ul>
-<p>tax: $x.xx</p>
-<p>delivery Fee: $x.xx</p>
-<strong><p>Total: $x.xx</p></strong>
+<h1>My Cart</h1>
+    <ul class="items">
+        <li *ngFor="let item of items">
+        
+            <a routerLink="/detail/{{item.id}}">
+                <div class="badge">{{item.name}}</div>             
+            </a>
+            <div>
+                <label for="item-qty">Qty: </label>
+                <input id="item-qty" [(ngModel)]="item.qty" 
+                placeholder="Item qty" (ngModelChange)="getItems();"/>        
+            </div>
+            <label>Price: ${{(item.price * item.qty).toFixed(2)}}</label>
+            
+        </li>        
+    </ul>
+
+
+    <p>Tax: ${{(subtotal * .095).toFixed(2)}}</p>
+    <p>Subtotal: ${{subtotal.toFixed(2)}}</p>
+    <p>Delivery Fee: $15.55</p>
+    <strong><p>Total: ${{(subtotal * 1.095 + 15.55).toFixed(2)}}</p></strong>
+
 <button>Checkout</button>
