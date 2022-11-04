@@ -26,8 +26,9 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
