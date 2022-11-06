@@ -1,9 +1,17 @@
-<h1>Browse Stores</h1>
-<label>Search: </label><input type="text">
-<ul class="gifts">
-  <li *ngFor="let gift of gifts">
-    <span class="badge">{{gift.price}}</span>
-    <span class="name">{{gift.name}}</span>
-  </li>
-</ul>
+<h1>{{currentUser}}</h1>
 
+<div *ngIf="!loggedIn">
+  <app-login></app-login>
+  </div>
+
+
+<div *ngIf="loggedIn">
+  <label>Search: </label><input type="text">
+  <ul class="gifts">
+    <li *ngFor="let gift of gifts">
+      <span class="badge">{{gift.price}}</span>
+      <span class="name">{{gift.name}}</span>
+    </li>
+  </ul>
+  <app-login></app-login>
+</div>

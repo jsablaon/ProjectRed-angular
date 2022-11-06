@@ -1,6 +1,14 @@
-<h1>Welcome (User)</h1>
-<ul>
-    <li>Settings</li>
-    <li>Favorite Orders</li>
-    <li>Logout</li>
-</ul>
+<h1>{{currentUser}}</h1>
+
+<div *ngIf="!loggedIn">
+    <app-login></app-login>
+</div>
+
+<div *ngIf="loggedIn">
+    <ul>
+        <li>Settings</li>
+        <li>Favorite Orders</li>
+        <li>Logout</li>
+    </ul>
+    <app-login></app-login>
+</div>
