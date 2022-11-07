@@ -12,6 +12,7 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { LoginComponent } from './login/login.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LoginComponent } from './login/login.component';
     AccountComponent,
     OrderHistoryComponent,
     ItemDetailComponent,
-    LoginComponent
+    LoginComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
