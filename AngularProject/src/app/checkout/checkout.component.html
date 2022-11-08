@@ -27,7 +27,7 @@
     <input id="shipping-state" /></p>
 
     <p><label for="shipping-zip">Zip/Postal Code: </label>
-    <input id="shipping-zip" /></p>
+    <input maxlength="10" id="shipping-zip" /></p>
 
     <p><label for="shipping-country">Country: </label>
     <input id="shipping-country" /></p>
@@ -50,7 +50,7 @@
     <input id="billing-state" /></p>
 
     <p><label for="billing-zip">Zip/Postal Code: </label>
-    <input id="billing-zip" /></p>
+    <input maxlength="10" id="billing-zip" /></p>
 
     <p><label for="billing-country">Country: </label>
     <input id="billing-country" /></p>
@@ -64,7 +64,7 @@
     <input id="card-number" placeholder="0000 0000 0000 0000"/></p>
 
     <p><label for="card-experation">Experation Date: </label>
-    <input id="card-experation" placeholder="MM/YY"/></p>
+    <input type="month" id="card-experation"/></p>
 
     <p><label for="card-security">CCV/CVV: </label>
     <input id="card-security" placeholder="000"/></p>
