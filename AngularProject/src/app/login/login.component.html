@@ -1,6 +1,10 @@
-<h1>Welcome to App Name</h1>
-<form>
-    <label>Email or Username </label><input type="text"><br>
-    <label>Password </label><input type="text"><br>
-    <input type="submit">
-</form>
+<br><br>
+<div *ngIf="!display">
+  <div id="buttonDiv"></div>
+</div>
+
+  
+  <div *ngIf="display">
+    <h2>You are logged in </h2>
+    <button (click)="logout()">Log Out</button>
+  </div>

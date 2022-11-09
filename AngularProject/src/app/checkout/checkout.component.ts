@@ -4,13 +4,12 @@ import { Item } from '../item';
 import { ItemService } from '../item.service'
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  selector: 'app-checkout',
+  templateUrl: './checkout.component.html',
+  styleUrls: ['./checkout.component.css']
 })
+export class CheckoutComponent implements OnInit {
 
-
-export class CartComponent implements OnInit {
   items: Item[] = [];
   subtotal:number = 0;
   loggedIn: boolean = false;
@@ -26,10 +25,9 @@ export class CartComponent implements OnInit {
     }
     else {
       this.loggedIn = true;
-      this.currentUser = 'My Cart';
+      this.currentUser = 'My Checkout';
     }
   }
-
 
   getItems(): void {
     this.subtotal = 0;
@@ -42,19 +40,6 @@ export class CartComponent implements OnInit {
 
       return this.items = items;
     });
-  }
-
-  updateItem(item: Item): void{
-    if(item){
-      this.itemService.updateItem(item).subscribe();
-    }
-
-    this.getItems();
-  }
-
-  delete(item: Item): void{
-    this.items = this.items.filter(h => h !== item);
-    this.itemService.deleteItem(item.id).subscribe();
   }
 
 }
