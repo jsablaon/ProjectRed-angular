@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 import {Item} from './item';
+import {TargetItem} from './target-items'
+
 import {ITEMS} from './mock-items';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http'
@@ -14,23 +16,24 @@ export class ItemService {
   constructor( private http: HttpClient) { }
 
   getItems(): Observable<Item[]> {
-    return this.http.get<Item[]>('http://localhost:3000/items');
+    return this.http.get<Item[]>('http://localhost:3000/index/items');
   }
 
   getItem(id: number): Observable<Item> {
-    return this.http.get<Item>('http://localhost:3000/items/' + id);
+    return this.http.get<Item>('http://localhost:3000/index/items' + id);
   }
 
   updateItem(item: Item): Observable<any> {
-    return this.http.put('http://localhost:3000/items/' + item.id, item);
+    console.log("item.id");
+    return this.http.put('http://localhost:3000/index/items/' + item.id, item);
   }
 
   deleteItem(id: number): Observable<string> {
-    return this.http.delete<string>('http://localhost:3000/items/' + id);
+    return this.http.delete<string>('http://localhost:3000/index/items/' + id);
   }
 
   addItem(item: Item): Observable<Item> {
-    return this.http.post<Item>('http://localhost:3000/items', item);
+    return this.http.post<Item>('http://localhost:3000/index/items', item);
   }
 
   // getItems(): Observable<Item[]> {

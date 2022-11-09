@@ -44,4 +44,17 @@ export class CartComponent implements OnInit {
     });
   }
 
+  updateItem(item: Item): void{
+    if(item){
+      this.itemService.updateItem(item).subscribe();
+    }
+
+    this.getItems();
+  }
+
+  delete(item: Item): void{
+    this.items = this.items.filter(h => h !== item);
+    this.itemService.deleteItem(item.id).subscribe();
+  }
+
 }
