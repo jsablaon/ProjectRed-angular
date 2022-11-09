@@ -1,0 +1,73 @@
+<p>Checkout</p>
+<strong><p>Total: ${{(subtotal * 1.095 + 15.55).toFixed(2)}}</p></strong>
+<div *ngIf="loggedIn">
+    <ul class="items">
+        <li *ngFor="let item of items">
+            <a routerLink="/detail/{{item.id}}">
+                <div class="badge">{{item.name}}</div>             
+            </a>
+            <div>
+                <p>Qty: {{item.qty}}</p>
+                <p>Price: ${{(item.price * item.qty).toFixed(2)}}</p>        
+            </div>            
+        </li>        
+    </ul>
+    <strong><p>Shipping Address</p></strong>
+
+    <p><label for="shipping-address-1">Address Line 1: </label>
+    <input id="shipping-address-1" /></p>
+
+    <p><label for="shipping-address-2">Address Line 2: </label>
+    <input id="shipping-address-2" /></p>
+
+    <p><label for="shipping-city">City: </label>
+    <input id="shipping-city" /></p>
+
+    <p><label for="shipping-state">State/Province: </label>
+    <input id="shipping-state" /></p>
+
+    <p><label for="shipping-zip">Zip/Postal Code: </label>
+    <input maxlength="10" id="shipping-zip" /></p>
+
+    <p><label for="shipping-country">Country: </label>
+    <input id="shipping-country" /></p>
+
+    <p><label for="shipping-phone">Telephone: </label>
+    <input id="shipping-phone" /></p>
+
+
+    <strong><p>Billing Address</p></strong>
+    <p><label for="billing-address-1">Address Line 1: </label>
+    <input id="billing-address-1" /></p>
+
+    <p><label for="billing-address-2">Address Line 2: </label>
+    <input id="billing-address-2" /></p>
+
+    <p><label for="billing-city">City: </label>
+    <input id="billing-city" /></p>
+
+    <p><label for="billing-state">State/Province: </label>
+    <input id="billing-state" /></p>
+
+    <p><label for="billing-zip">Zip/Postal Code: </label>
+    <input maxlength="10" id="billing-zip" /></p>
+
+    <p><label for="billing-country">Country: </label>
+    <input id="billing-country" /></p>
+
+    <p><label for="billing-phone">Telephone: </label>
+    <input id="billing-phone" /></p>
+
+
+    <strong><p>Payment Info</p></strong>
+    <p><label for="card-number">Card Number: </label>
+    <input id="card-number" placeholder="0000 0000 0000 0000"/></p>
+
+    <p><label for="card-experation">Experation Date: </label>
+    <input type="month" id="card-experation"/></p>
+
+    <p><label for="card-security">CCV/CVV: </label>
+    <input id="card-security" placeholder="000"/></p>
+    
+    <button>Finish & Pay</button>
+</div>
