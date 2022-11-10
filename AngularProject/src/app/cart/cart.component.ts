@@ -53,8 +53,10 @@ export class CartComponent implements OnInit {
   }
 
   delete(item: Item): void{
+    console.log("read");
     this.items = this.items.filter(h => h !== item);
     this.itemService.deleteItem(item.id).subscribe();
+    this.getItems();
   }
 
 }

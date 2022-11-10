@@ -32,6 +32,10 @@ export class ItemService {
     return this.http.delete<string>('http://localhost:3000/index/items/' + id);
   }
 
+
+
+
+  
   addItem(item: Item): Observable<Item> {
     return this.http.post<Item>('http://localhost:3000/index/items', item);
   }
