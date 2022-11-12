@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     });
     google.accounts.id.renderButton(
       document.getElementById("buttonDiv"),
-      { size: "large", type: "icon", shape: "rectangular", theme:"filled_blue" }
+      { size: "large", type: "text", shape: "rectangular", theme:"outline" }
     );
   }
 

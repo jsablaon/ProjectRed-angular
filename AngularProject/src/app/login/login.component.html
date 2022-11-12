@@ -1,10 +1,12 @@
-<br><br>
-<div *ngIf="!display">
-  <div id="buttonDiv"></div>
+<div id="Page">
+  <br><br>
+  <div *ngIf="!display">
+    <div id="buttonDiv"></div>
+  </div>
+  
+    
+  <div *ngIf="display">
+    <button id="logoutBtn" (click)="logout()">Log Out</button>
+  </div>
 </div>
 
-  
-  <div *ngIf="display">
-    <h2>You are logged in </h2>
-    <button (click)="logout()">Log Out</button>
-  </div>

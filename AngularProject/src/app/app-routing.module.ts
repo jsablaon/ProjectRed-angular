@@ -5,7 +5,7 @@ import { CartComponent } from './cart/cart.component';
 import { HomescreenComponent } from './homescreen/homescreen.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
-
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: 'Account', component: AccountComponent},
@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'Home', component: HomescreenComponent},
   {path: 'Checkout', component: CheckoutComponent},
   {path: 'detail/:id', component: ItemDetailComponent},
-
+  {path: 'Login', component: LoginComponent}
 ];
 
 @NgModule({

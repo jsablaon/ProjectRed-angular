@@ -1,14 +1,14 @@
-<h1>{{currentUser}}</h1>
+<div id="Page">
+    <h1>{{currentUser}}</h1>
 
-<div *ngIf="!loggedIn">
-    <app-login></app-login>
+    <div *ngIf="!loggedIn">
+        <app-login></app-login>
+    </div>
+    
+    <div *ngIf="loggedIn">
+        <p>{{Name}}</p>
+        <p>{{Email}}</p>
+        <app-login></app-login>
+    </div>
 </div>
 
-<div *ngIf="loggedIn">
-    <ul>
-        <li>Settings</li>
-        <li>Favorite Orders</li>
-        <li>Logout</li>
-    </ul>
-    <app-login></app-login>
-</div>

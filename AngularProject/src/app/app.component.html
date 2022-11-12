@@ -7,14 +7,32 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<nav>
-  <a routerLink="/Home">Home</a><br>
-  <a routerLink="/Cart">Cart</a><br>
-  <a routerLink="/Checkout">Checkout</a><br>
-  <a routerLink="/Account">Account</a><br>
-</nav>
+
+<div class="startContainer">
+  <div>
+      <div id="sideBySide">
+        <img rel="image/png" src="assets/icon.png"><
+        <p id="font"><b>EarlyBird</b></p>
+      </div>
+      <p id="big_font" class="text-lg-right text-center">Deliver gifts to your loved ones</p>
+      <nav>
+        <a id="btnNav" routerLink="/Home">Home</a>
+        <a id="btnNav" routerLink="/Cart">Cart</a>
+        <a id="btnNav" routerLink="/Checkout">Checkout</a>
+        <a id="btnNav" routerLink="/Account">Account</a>
+        <a id="btnNav" routerLink="/Login">Login</a>
+      </nav>
+      <br>
+  </div>
+</div>
 
 <router-outlet></router-outlet>
+
+<div class="footer">
+  <p>© 2022 EarlyBird</p>
+</div>
+
+
 
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

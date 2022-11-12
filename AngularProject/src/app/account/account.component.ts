@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class AccountComponent implements OnInit {
   loggedIn: boolean = false;
   currentUser: string = 'Please Log In';
+  Name: string = sessionStorage.getItem('Name:');
+  Email: string = sessionStorage.getItem('Email');
 
   constructor() { }
 

@@ -26,7 +26,7 @@ export class CartComponent implements OnInit {
     }
     else {
       this.loggedIn = true;
-      this.currentUser = 'My Cart';
+      this.currentUser = 'Cart';
     }
   }
 
