@@ -4,3 +4,13 @@ export interface Item {
     price: number;
     qty: number;
 }
+
+export interface TargetItem {
+    userId: string;
+    storeId: string;
+    itemId: string;
+    itemName: string;
+    itemPrice: string;
+    itemImage: string;
+    itemVideo: string;
+}
