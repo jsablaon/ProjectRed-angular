@@ -3,6 +3,8 @@ import { Observable, of } from 'rxjs';
 
 import {Item} from './item';
 import {TargetItem} from './item'
+import {TargetStore} from './item'
+
 
 import {ITEMS} from './mock-items';
 
@@ -59,7 +61,6 @@ export class TargetService {
   constructor( private http: HttpClient) { }
 
   getItems(): Observable<TargetItem[]> {
-    console.log("============================> something here")
     //TODO: parse userid and storeid
     return this.http.get<TargetItem[]>('http://localhost:3000/targetapi/getitems?userId=3&storeId=1122');
   }
@@ -83,6 +84,14 @@ export class TargetService {
 
   addItem(item: Item): Observable<Item> {
     return this.http.post<Item>('http://localhost:3000/items', item);
+  }
+
+
+  // stores
+  getStores(): Observable<TargetStore[]> {
+    console.log("============================> something here")
+    //TODO: parse userid and storeid
+    return this.http.get<TargetStore[]>('http://localhost:3000/targetapi/getstores?userId=1&zip=98007');
   }
 }
 // end of Target Service

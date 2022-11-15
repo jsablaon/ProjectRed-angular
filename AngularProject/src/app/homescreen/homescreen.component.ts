@@ -5,6 +5,8 @@ import { TestListService } from '../test-list.service';
 
 import { TargetService } from '../item.service';
 import { TargetItem } from '../item'
+import { TargetStore } from '../item'
+
 
 @Component({
   selector: 'app-homescreen',
@@ -13,6 +15,7 @@ import { TargetItem } from '../item'
 })
 export class HomescreenComponent implements OnInit {
   targetItems: TargetItem[] = [];
+  targetStores: TargetStore[] = [];
   loggedIn: boolean = false;
   currentUser: string = 'Please Log In';
 
@@ -22,6 +25,7 @@ export class HomescreenComponent implements OnInit {
 
   ngOnInit(): void {
     // this.getGifts();
+    this.getTargetStores();
     this.getTargetItems();
 
     if(sessionStorage.getItem('ID:') === null){
@@ -47,8 +51,12 @@ export class HomescreenComponent implements OnInit {
     this.targetService.getItems()
     .subscribe(targetItems => this.targetItems = targetItems);
     console.log(this.targetItems);
+  }
 
-
+  getTargetStores(): void{
+    this.targetService.getStores()
+    .subscribe(targetStores => this.targetStores = targetStores);
+    console.log(this.targetStores);
   }
 
 }
