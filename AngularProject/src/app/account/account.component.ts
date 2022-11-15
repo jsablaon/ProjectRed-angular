@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../user';
+import { UserService } from '../user.service'
+
 
 @Component({
   selector: 'app-account',
@@ -7,11 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountComponent implements OnInit {
   loggedIn: boolean = false;
-  currentUserName: string = '';
-  currentUserEmail: string = '';
-  currentUserId: string = '';
+  currentUser: User = { Name: '', Email: '', UserId:0};
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     if(sessionStorage.getItem('ID:') === null){
@@ -19,9 +20,9 @@ export class AccountComponent implements OnInit {
     }
     else {
       this.loggedIn = true;
-      this.currentUserName = sessionStorage.getItem('Name:');
-      this.currentUserEmail = sessionStorage.getItem('Email');
-      this.currentUserId = sessionStorage.getItem('ID:');
+      this.currentUser.Name = sessionStorage.getItem('Name:');
+      this.currentUser.Email = sessionStorage.getItem('Email');
+      this.currentUser.UserId = sessionStorage.getItem('ID:');
     }
   }
 
