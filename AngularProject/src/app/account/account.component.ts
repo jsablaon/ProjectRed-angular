@@ -20,10 +20,13 @@ export class AccountComponent implements OnInit {
     }
     else {
       this.loggedIn = true;
-      this.currentUser.Name = sessionStorage.getItem('Name:');
-      this.currentUser.Email = sessionStorage.getItem('Email');
-      this.currentUser.UserId = sessionStorage.getItem('ID:');
+      this.getUser();
     }
   }
+
+  getUser(): void{      
+      this.userService.getUser(sessionStorage.getItem('ID:')).subscribe(user => this.currentUser = user);
+  }
+  
 
 }
