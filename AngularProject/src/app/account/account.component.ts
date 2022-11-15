@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountComponent implements OnInit {
   loggedIn: boolean = false;
-  currentUser: string = 'Please Log In';
+  currentUserName: string = '';
+  currentUserEmail: string = '';
+  currentUserId: string = '';
 
   constructor() { }
 
@@ -17,7 +19,9 @@ export class AccountComponent implements OnInit {
     }
     else {
       this.loggedIn = true;
-      this.currentUser = 'My Account';
+      this.currentUserName = sessionStorage.getItem('Name:');
+      this.currentUserEmail = sessionStorage.getItem('Email');
+      this.currentUserId = sessionStorage.getItem('ID:');
     }
   }
 
