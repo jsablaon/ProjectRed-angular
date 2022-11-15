@@ -1,4 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { User } from '../user';
+import { UserService } from '../user.service';
+
 declare var google: any;
 
 @Component({
@@ -17,7 +20,7 @@ export class LoginComponent implements OnInit {
     window.location.href = '/Home';
   }
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     if( sessionStorage.getItem('ID:') == null ) {
@@ -57,6 +60,8 @@ export class LoginComponent implements OnInit {
     sessionStorage.setItem('ID:', goggleobject.sub ); // The unique ID of the user's Google Account
     sessionStorage.setItem('Name:', goggleobject.name);
     sessionStorage.setItem('Email', goggleobject.email)
+    var currentUser: User = { UserId: goggleobject.sub, Name: goggleobject.name, Email: goggleobject.email};
+    this.userService.addUser(currentUser).subscribe();
     
     this.display = true;
     window.location.href = '/Home';

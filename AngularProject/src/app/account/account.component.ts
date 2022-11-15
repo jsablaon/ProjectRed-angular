@@ -10,7 +10,7 @@ import { UserService } from '../user.service'
 })
 export class AccountComponent implements OnInit {
   loggedIn: boolean = false;
-  currentUser: User = { Name: '', Email: '', UserId:0};
+  currentUser: User = { Name: '', Email: '', UserId:''};
 
   constructor(private userService: UserService) { }
 
