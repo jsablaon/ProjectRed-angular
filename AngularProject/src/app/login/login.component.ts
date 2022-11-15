@@ -17,6 +17,11 @@ export class LoginComponent implements OnInit {
     window.location.href = '/Home';
   }
 
+  guestLogin(): void{
+    sessionStorage.setItem('ID:', '123' ); // The unique ID of the user's Google Account
+    sessionStorage.setItem('Name:', 'GUEST');
+  }
+
   constructor() { }
 
   ngOnInit(): void {

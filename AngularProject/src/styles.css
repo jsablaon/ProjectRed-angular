@@ -212,7 +212,7 @@ label {
 }
 
 
-#payBtn, #checkoutBtn {
+#payBtn, #checkoutBtn,#guestBtn {
     font-family: myriad-pro,sans-serif;
     background-color: #fbeee0;
     border: 2px solid #422800;
@@ -233,6 +233,11 @@ label {
     justify-content: center; 
     align-items: center;
     margin-bottom: 100px;
+}
+
+#guest{
+  text-decoration: none;
+  color:black;
 }
 
 

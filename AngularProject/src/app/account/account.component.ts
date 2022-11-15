@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AccountComponent implements OnInit {
   loggedIn: boolean = false;
   currentUser: string = 'Please Log In';
+  ID: string = sessionStorage.getItem('ID:')
   Name: string = sessionStorage.getItem('Name:');
   Email: string = sessionStorage.getItem('Email');
 
@@ -20,6 +21,10 @@ export class AccountComponent implements OnInit {
     else {
       this.loggedIn = true;
       this.currentUser = 'My Account';
+      if (this.ID == '123')
+      {
+        this.Email = "For a more personalized experience, sign in with Google!"
+      }
     }
   }
 
