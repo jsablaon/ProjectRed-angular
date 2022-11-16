@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
     sessionStorage.setItem('Name:', "");
     this.display = false;
     console.log("in logout " + this.display);
-    window.location.href = '/Home';
+    window.location.href = '/';
   }
 
   guestLogin(): void{

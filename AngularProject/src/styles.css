@@ -32,24 +32,52 @@ img {
   text-align: center !important;
 }
 
+.gifts {
+  width: 100%;
+  height: 100%;
+  margin: 10%;
+}
+
 #font {
   font-family: 'KaushanScript-Regular';
   font-size: 42px;
   margin: 0 0 0 10px;
 }
 
-#sideBySide {
+.sideBySide {
   display: flex;
   justify-content: center; 
   align-items: center;
   vertical-align: middle;
-  margin: 4.5% 1% 0 0;
+  margin-top: 4.5%;
+}
+
+.sideBySide2 {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  vertical-align: middle;
+}
+
+.driver-partner {
+  width: 27%;
+  height: 27%;
 }
 
 p {
   font-family: myriad-pro,sans-serif;
   font-weight: 700;
   font-style: normal;
+}
+
+.text {
+  font-size: 16.5px;
+  font-weight: 100;
+}
+
+#addText {
+  font-family: myriad-pro, sans-serif;
+  font-size: 20px;
 }
 
 #big_font {
@@ -61,11 +89,7 @@ p {
   text-align: center !important;
 }
 
-#buttonDiv {
-    text-align: center;
-}
-
-#btnNav {
+#btnNav, #logoutBtn, #buttonDiv, #guestBtn {
   font-family: myriad-pro,sans-serif;
   background-color: #fbeee0;
   border: 2px solid #422800;
@@ -90,20 +114,13 @@ p {
 
 }
 
-.btnSignIn:hover {
+#btnNav:hover, #logoutBtn:hover, #buttonDiv:hover, #guestBtn:hover {
   background-color: #fff;
 }
 
-.btnSignIn:active {
+#btnNav:active, #logoutBtn:active, #buttonDiv:active, #guestBtn:active {
   box-shadow: #422800 2px 2px 0 0;
   transform: translate(2px, 2px);
-}
-
-@media (min-width: 768px) {
-  .btnSignIn {
-    min-width: 120px;
-    padding: 0 25px;
-  }
 }
 
 .center {
@@ -112,6 +129,14 @@ p {
   align-items: center;
   vertical-align: middle;
   margin: 15% 0 15% 0;
+}
+
+.centerDriver-Parter {
+  text-align: center;
+}
+
+.endContainer {
+  background-color: #FFDFDD;
 }
 
 .footer {
@@ -124,29 +149,8 @@ p {
   text-align: center;
 }
 
-#logoutBtn {
-    font-family: myriad-pro,sans-serif;
-    background-color: #fbeee0;
-    border: 2px solid #422800;
-    border-radius: 30px;
-    box-shadow: #422800 4px 4px 0 0;
-    color: #422800;
-    cursor: pointer;
-    display: inline-block;
-    font-weight: 600;
-    font-size: 20px;
-    padding: 10px;
-    line-height: 25px;
-    text-align: center;
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    justify-content: center; 
-    align-items: center;
-}
-
 h1 {
+    font-family: myriad-pro,sans-serif;
     text-align: center;
     text-decoration: underline;
     margin-bottom: 50px;
@@ -212,7 +216,7 @@ label {
 }
 
 
-#payBtn, #checkoutBtn,#guestBtn {
+#payBtn, #checkoutBtn {
     font-family: myriad-pro,sans-serif;
     background-color: #fbeee0;
     border: 2px solid #422800;
