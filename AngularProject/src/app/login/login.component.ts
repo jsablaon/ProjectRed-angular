@@ -58,8 +58,8 @@ export class LoginComponent implements OnInit {
     console.log(goggleobject.name);
     console.log(goggleobject.iat);
     sessionStorage.setItem('ID:', goggleobject.sub ); // The unique ID of the user's Google Account
-    sessionStorage.setItem('Name:', goggleobject.name);
-    sessionStorage.setItem('Email', goggleobject.email)
+    //sessionStorage.setItem('Name:', goggleobject.name);
+    //sessionStorage.setItem('Email', goggleobject.email)
     var currentUser: User = { UserId: goggleobject.sub, Name: goggleobject.name, Email: goggleobject.email};
     this.userService.addUser(currentUser).subscribe();
     
