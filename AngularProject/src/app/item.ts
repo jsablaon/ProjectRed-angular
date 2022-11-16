@@ -13,4 +13,13 @@ export interface TargetItem {
     itemPrice: string;
     itemImage: string;
     itemVideo: string;
+
+}
+
+export interface TargetStore {
+    userId: string;
+    storeId: string;
+    locationName: string;
+    distance: string;
+    phoneNumber: string;
 }

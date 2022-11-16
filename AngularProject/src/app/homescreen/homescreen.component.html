@@ -8,6 +8,17 @@
 <div *ngIf="loggedIn">
   <label>Search: </label><input type="text" placeholder="keywords">
   <label>Zipcode: </label><input type="text" placeholder="ex: 98007">
+  <h2>Stores</h2>
+  <ul class="targetStores">
+    <li *ngFor="let targetStore of targetStores">
+      <div class="store">Location: {{targetStore.locationName}}</div>
+        <div class="store">Distance: {{targetStore.distance}}</div>
+        <div class="store">Phone: {{targetStore.phoneNumber}}</div>
+
+    </li>
+  </ul>
+
+  <h2>Products</h2>
   <ul class="targetItems">
     <li *ngFor="let targetItem of targetItems">
       <div><img class="images" src={{targetItem.itemImage}}/></div>
