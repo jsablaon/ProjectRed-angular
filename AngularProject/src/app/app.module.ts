@@ -13,8 +13,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { LoginComponent } from './login/login.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+
 import { EditAccountComponent } from './edit-account/edit-account.component';
 
+import { TargetService } from './item.service';
 @NgModule({
   declarations: [
     AppComponent,
