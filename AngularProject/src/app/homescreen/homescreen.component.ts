@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { Gift } from '../gift';
 import { TestListService } from '../test-list.service';
+import { User } from '../user';
+import { UserService } from '../user.service'
+
 
 import { TargetService } from '../item.service';
 import { TargetItem } from '../item'
@@ -18,11 +21,11 @@ export class HomescreenComponent implements OnInit {
   targetStores: TargetStore[] = [];
 
   loggedIn: boolean = false;
-  currentUser: string = 'Please Log In';
+  currentUser: User = { Name: '', Email: '', UserId:''};
 
 
-  // constructor(private testService: TestListService) { }
-  constructor(private targetService: TargetService) { }
+
+  constructor(private targetService: TargetService, private testService: TestListService, private userService: UserService) { }
 
   ngOnInit(): void {
     // this.getGifts();
@@ -34,7 +37,8 @@ export class HomescreenComponent implements OnInit {
     }
     else {
       this.loggedIn = true;
-      this.currentUser = 'Welcome ' + sessionStorage.getItem('Name:');
+      this.getUser();
+      
     }
   }
 
@@ -59,6 +63,10 @@ export class HomescreenComponent implements OnInit {
     .subscribe(targetStores => this.targetStores = targetStores);
     console.log(this.targetStores);
   }
+
+  getUser(): void{      
+    this.userService.getUser(sessionStorage.getItem('ID:')).subscribe(user => this.currentUser = user);
+}
 
 }
 
