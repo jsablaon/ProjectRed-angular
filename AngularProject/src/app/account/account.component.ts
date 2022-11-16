@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../user';
+import { UserService } from '../user.service'
+
 
 @Component({
   selector: 'app-account',
@@ -7,9 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountComponent implements OnInit {
   loggedIn: boolean = false;
-  currentUser: string = 'Please Log In';
+  currentUser: User = { Name: '', Email: '', UserId:''};
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     if(sessionStorage.getItem('ID:') === null){
@@ -17,8 +20,13 @@ export class AccountComponent implements OnInit {
     }
     else {
       this.loggedIn = true;
-      this.currentUser = 'My Account';
+      this.getUser();
     }
   }
+
+  getUser(): void{      
+      this.userService.getUser(sessionStorage.getItem('ID:')).subscribe(user => this.currentUser = user);
+  }
+  
 
 }

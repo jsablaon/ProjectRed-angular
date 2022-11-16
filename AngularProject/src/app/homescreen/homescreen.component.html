@@ -1,4 +1,4 @@
-<h1>{{currentUser}}</h1>
+<h1>Welcome, {{currentUser.Name}}</h1>
 
 <div *ngIf="!loggedIn">
   <app-login></app-login>
@@ -6,11 +6,25 @@
 
 
 <div *ngIf="loggedIn">
-  <label>Search: </label><input type="text">
-  <ul class="gifts">
-    <li *ngFor="let gift of gifts">
-      <span class="badge">{{gift.price}}</span>
-      <span class="name">{{gift.name}}</span>
+  <label>Search: </label><input type="text" placeholder="keywords">
+  <label>Zipcode: </label><input type="text" placeholder="ex: 98007">
+  <h2>Stores</h2>
+  <ul class="targetStores">
+    <li *ngFor="let targetStore of targetStores">
+      <div class="store">Location: {{targetStore.locationName}}</div>
+        <div class="store">Distance: {{targetStore.distance}}</div>
+        <div class="store">Phone: {{targetStore.phoneNumber}}</div>
+
+    </li>
+  </ul>
+
+  <h2>Products</h2>
+  <ul class="targetItems">
+    <li *ngFor="let targetItem of targetItems">
+      <div><img class="images" src={{targetItem.itemImage}}/></div>
+      <div class="name">{{targetItem.itemName}}</div>
+      <div class="price">price: {{targetItem.itemPrice}}</div>
+      <div class="video"><a href={{targetItem.itemVideo}}>Video Link</a></div>
     </li>
   </ul>
   <app-login></app-login>
