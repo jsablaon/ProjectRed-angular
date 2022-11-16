@@ -13,6 +13,7 @@ export interface TargetItem {
     itemPrice: string;
     itemImage: string;
     itemVideo: string;
+
 }
 
 export interface TargetStore {

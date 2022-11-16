@@ -16,6 +16,7 @@ import { TargetStore } from '../item'
 export class HomescreenComponent implements OnInit {
   targetItems: TargetItem[] = [];
   targetStores: TargetStore[] = [];
+
   loggedIn: boolean = false;
   currentUser: string = 'Please Log In';
 

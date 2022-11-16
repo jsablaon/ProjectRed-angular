@@ -89,7 +89,6 @@ export class TargetService {
 
   // stores
   getStores(): Observable<TargetStore[]> {
-    console.log("============================> something here")
     //TODO: parse userid and storeid
     return this.http.get<TargetStore[]>('http://localhost:3000/targetapi/getstores?userId=1&zip=98007');
   }
