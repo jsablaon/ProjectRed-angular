@@ -1,31 +1,43 @@
-<h1>{{currentUser}}</h1>
-<div *ngIf="!loggedIn">
-    <app-login></app-login>
-</div>
-<div *ngIf="loggedIn">
-    <ul class="items">
-        <li *ngFor="let item of items">
-        
-            <a routerLink="/detail/{{item.id}}">
-                <div class="badge">{{item.name}}</div>             
-            </a>
-            <div>
-                <label for="item-qty">Qty: </label>
-                <input type="number" min="1" max="100" id="item-qty" [(ngModel)]="item.qty" 
-                placeholder="Item qty" (ngModelChange)="updateItem(item);"/>   
-                <button (click)="delete(item)">Remove Item</button>     
+<div id="Page">
+    <h1>{{currentUser}}</h1>
+    <div *ngIf="!loggedIn">
+        <app-login></app-login>
+    </div>
+    <div *ngIf="loggedIn">
+        <ul class="items">
+            <li *ngFor="let item of items">
+                <span>
+                <a routerLink="/detail/{{item.id}}"><div id="itemName" class="badge">{{item.name}}</div></a>
+                <div id="cartItems">
+                    <label for="item-qty">Qty: </label>
+                    <input type="number" min="1" max="100" id="item-qty" [(ngModel)]="item.qty" 
+                    placeholder="Item qty" (ngModelChange)="updateItem(item);"/>
+                    <button (click)="delete(item)">Remove Item</button><br>  
+                    <p><em>Price: ${{(item.price * item.qty).toFixed(2)}}</em></p>
+                    <br>     
+                </div>
+                </span>
+            </li>        
+        </ul>
+    
+        <div class="container">
+            <div class="row">
+                <div id="endLable" class="col-2">
+                    <p>Tax:</p> 
+                    <p>Subtotal:</p>
+                    <p>Delivery Fee:</p>
+                </div>
+                <div id="endCost" class="col-2">
+                    <p> ${{(subtotal * .095).toFixed(2)}}</p>
+                    <p> ${{subtotal.toFixed(2)}}</p>
+                    <p> $15.55</p>
+                </div>
             </div>
-            
-            <label>Price: ${{(item.price * item.qty).toFixed(2)}}</label>
-            
-        </li>        
-    </ul>
+        </div>
+        <br>
+        <strong><p style="font-size:30px;">Total: ${{(subtotal * 1.095 + 15.55).toFixed(2)}}</p></strong>
 
-
-    <p>Tax: ${{(subtotal * .095).toFixed(2)}}</p>
-    <p>Subtotal: ${{subtotal.toFixed(2)}}</p>
-    <p>Delivery Fee: $15.55</p>
-    <strong><p>Total: ${{(subtotal * 1.095 + 15.55).toFixed(2)}}</p></strong>
-
-<button routerLink="/Checkout">Checkout</button>
+    <button id="checkoutBtn" routerLink="/Checkout">Checkout</button>
+    </div>
 </div>
+

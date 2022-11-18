@@ -17,7 +17,11 @@ export class LoginComponent implements OnInit {
     sessionStorage.setItem('Name:', "");
     this.display = false;
     console.log("in logout " + this.display);
-    window.location.href = '/Home';
+    window.location.href = '/';
+  }
+
+  guestLogin(): void{
+    sessionStorage.setItem('ID:', '123' ); 
   }
 
   constructor(private userService: UserService) { }
@@ -42,7 +46,7 @@ export class LoginComponent implements OnInit {
     });
     google.accounts.id.renderButton(
       document.getElementById("buttonDiv"),
-      { size: "large", type: "icon", shape: "rectangular", theme:"filled_blue" }
+      { size: "large", type: "text", shape: "rectangular", theme:"outline" }
     );
   }
 

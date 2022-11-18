@@ -1,31 +1,53 @@
-<h1>Welcome, {{currentUser.Name}}</h1>
+<div id="Page">
+  <h1>Welcome, {{currentUser.Name}}</h1>
 
-<div *ngIf="!loggedIn">
-  <app-login></app-login>
+  <div *ngIf="!loggedIn">
+    <app-login></app-login>
   </div>
+  
+  
+  <div *ngIf="loggedIn">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-2">
+          <label>What are you looking for?</label>
+        </div>
+        <div class="col-sm-2">
+          <label>What's the recipients zip code?</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-2">
+          <input type="text" placeholder="keywords">
+        </div>
+        <div class="col-sm-2">
+          <input type="text" placeholder="Type a zip (ex: 98007)">
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <button id="searchBtn">Find Gifts!</button>
+    <br><br>
+ <br>
 
-
-<div *ngIf="loggedIn">
-  <label>Search: </label><input type="text" placeholder="keywords">
-  <label>Zipcode: </label><input type="text" placeholder="ex: 98007">
-  <h2>Stores</h2>
-  <ul class="targetStores">
-    <li *ngFor="let targetStore of targetStores">
-      <div class="store">Location: {{targetStore.locationName}}</div>
-        <div class="store">Distance: {{targetStore.distance}}</div>
-        <div class="store">Phone: {{targetStore.phoneNumber}}</div>
-
-    </li>
-  </ul>
-
-  <h2>Products</h2>
-  <ul class="targetItems">
-    <li *ngFor="let targetItem of targetItems">
-      <div><img class="images" src={{targetItem.itemImage}}/></div>
-      <div class="name">{{targetItem.itemName}}</div>
-      <div class="price">price: {{targetItem.itemPrice}}</div>
-      <div class="video"><a href={{targetItem.itemVideo}}>Video Link</a></div>
-    </li>
-  </ul>
-  <app-login></app-login>
+    
+    <h2>Nearby Stores</h2>
+    <ul class="targetStores">
+      <li *ngFor="let targetStore of targetStores">
+        <div class="store">Location: {{targetStore.locationName}}</div>
+          <div class="store">Distance: {{targetStore.distance}}</div>
+          <div class="store">Phone: {{targetStore.phoneNumber}}</div>
+      </li>
+    </ul>
+  
+    <h2>Products</h2>
+    <ul class="targetItems">
+      <li *ngFor="let targetItem of targetItems">
+        <div><img class="images" src={{targetItem.itemImage}}/></div>
+        <div class="name">{{targetItem.itemName}}</div>
+        <div class="price">price: {{targetItem.itemPrice}}</div>
+        <div class="video"><a href={{targetItem.itemVideo}}>Video Link</a></div>
+      </li>
+    </ul>
+  </div>
 </div>
