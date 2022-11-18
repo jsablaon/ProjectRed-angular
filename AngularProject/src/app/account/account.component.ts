@@ -11,6 +11,7 @@ import { UserService } from '../user.service'
 export class AccountComponent implements OnInit {
   loggedIn: boolean = false;
   currentUser: User = { Name: '', Email: '', UserId:''};
+  guestUser: boolean = true;
 
   constructor(private userService: UserService) { }
 
@@ -22,6 +23,16 @@ export class AccountComponent implements OnInit {
     }
     else {
       this.loggedIn = true;
+      if (sessionStorage.getItem('ID:')=='123')
+      {
+        this.guestUser = true;
+        this.currentUser.Name="GUEST"
+        this.currentUser.Email="For a more personalized experience, sign in with Google!"
+      }
+      else 
+      {
+        this.guestUser= false;
+      }
       this.getUser();
     }
   }

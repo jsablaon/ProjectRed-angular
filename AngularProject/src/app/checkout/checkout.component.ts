@@ -25,7 +25,7 @@ export class CheckoutComponent implements OnInit {
     }
     else {
       this.loggedIn = true;
-      this.currentUser = 'My Checkout';
+      this.currentUser = 'Checkout';
     }
   }
 
