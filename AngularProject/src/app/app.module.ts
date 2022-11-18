@@ -17,6 +17,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { EditAccountComponent } from './edit-account/edit-account.component';
 
 import { TargetService } from './item.service';
+import { ItemListComponent } from './item-list/item-list.component';
+import { StoreSearchComponent } from './store-search/store-search.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,9 @@ import { TargetService } from './item.service';
     ItemDetailComponent,
     LoginComponent,
     CheckoutComponent,
-    EditAccountComponent
+    EditAccountComponent,
+    ItemListComponent,
+    StoreSearchComponent
   ],
   imports: [
     BrowserModule,

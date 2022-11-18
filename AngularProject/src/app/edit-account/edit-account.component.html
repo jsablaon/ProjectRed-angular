@@ -2,8 +2,9 @@
     <app-login></app-login>
 </div>
 
-<h1>{{currentUser.Name}}</h1>
+
 <div *ngIf="loggedIn">
+    <h1>{{currentUser.Name}}</h1>
     <div>
         <label for="users-name">Name: </label>
         <input id="users-name" value={{currentUser.Name}} #usersName/> 
