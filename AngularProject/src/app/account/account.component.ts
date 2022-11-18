@@ -16,7 +16,9 @@ export class AccountComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    
     if(sessionStorage.getItem('ID:') === null){
+      this.currentUser.Name = 'Please Log In'
       this.loggedIn = false;
     }
     else {

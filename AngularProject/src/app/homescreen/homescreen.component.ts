@@ -31,8 +31,9 @@ export class HomescreenComponent implements OnInit {
     // this.getGifts();
     this.getTargetStores();
     this.getTargetItems();
-
+    
     if(sessionStorage.getItem('ID:') === null){
+      this.currentUser.Name = 'Please Log In';
       this.loggedIn = false;
     }
     else {
