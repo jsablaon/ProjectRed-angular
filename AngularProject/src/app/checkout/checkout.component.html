@@ -1,6 +1,11 @@
 <p>Checkout</p>
-<strong><p>Total: ${{(subtotal * 1.095 + 15.55).toFixed(2)}}</p></strong>
+<div *ngIf="!loggedIn">
+    <app-login></app-login>
+</div>
+
+
 <div *ngIf="loggedIn">
+    <strong><p>Total: ${{(subtotal * 1.095 + 15.55).toFixed(2)}}</p></strong>
     <ul class="items">
         <li *ngFor="let item of items">
             <a routerLink="/detail/{{item.id}}">
