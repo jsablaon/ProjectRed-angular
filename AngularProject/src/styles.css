@@ -10,6 +10,9 @@ body {
   src: url(assets/fonts/KaushanScript-Regular.ttf);
 }
 
+@media (min-width: 768px) {
+};
+
 .startContainer {
   width: 100%;
   height: 100%;
@@ -89,7 +92,7 @@ p {
   text-align: center !important;
 }
 
-#btnNav, #logoutBtn, #buttonDiv, #guestBtn, #searchBtn {
+#btnNav, #buttonDiv, #guestBtn {
   font-family: myriad-pro,sans-serif;
   background-color: #fbeee0;
   border: 2px solid #422800;
@@ -114,11 +117,11 @@ p {
 
 }
 
-#btnNav:hover, #logoutBtn:hover, #buttonDiv:hover, #guestBtn:hover {
+#btnNav:hover, #logoutBtn:hover, #buttonDiv:hover, #guestBtn:hover, #editLink:hover, #payBtn:hover {
   background-color: #fff;
 }
 
-#btnNav:active, #logoutBtn:active, #buttonDiv:active, #guestBtn:active {
+#btnNav:active, #logoutBtn:active, #buttonDiv:active, #guestBtn:active, #editLink:hover, #payBtn:hover {
   box-shadow: #422800 2px 2px 0 0;
   transform: translate(2px, 2px);
 }
@@ -202,21 +205,32 @@ label {
     margin-right: 20px;
 }
 
-.col-sm-4 input {
-    float: right;
+.col{
+  grid-auto-columns: auto;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
-.col-sm-4 h2{
+.col h2{
   text-align: center;
 }
 
-.container-fluid {
+.container {
   width:70%;
   align-items: center;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
 
-#payBtn, #checkoutBtn {
+a:hover {
+  color:black;
+}
+
+#payBtn, #checkoutBtn, #editLink, #editBtn, #logoutBtn, #searchBtn {
     font-family: myriad-pro,sans-serif;
     background-color: #fbeee0;
     border: 2px solid #422800;
@@ -278,3 +292,5 @@ label {
 .row {
     justify-content: center;
 }
+
+
