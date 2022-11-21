@@ -1,6 +1,7 @@
 <div id="Page">
-    <h1>{{currentUser}}</h1>
+    
     <div *ngIf="loggedIn">
+        <h1>{{currentUser}}</h1>
         <strong><p style="font-size:25px">Total: ${{(subtotal * 1.095 + 15.55).toFixed(2)}}</p></strong>
         <ul class="items">
             <li *ngFor="let item of items">
@@ -17,6 +18,9 @@
             <div class="row">
                 <div id="shipping" class="col-sm-4">
                     <h2>Shipping Address</h2>
+
+                    <p><label for="shipping-name">Name: </label>
+                        <input id="shipping-name" /></p>
             
                     <p><label for="shipping-address-1">Address Line 1: </label>
                     <input id="shipping-address-1" /></p>
@@ -41,6 +45,9 @@
                 </div>
                 <div id="billing" class="col-sm-4">
                     <h2>Billing Address</h2>
+                    <p><label for="billing-name">Name: </label>
+                        <input id="billing-name" /></p>
+
                     <p><label for="billing-address-1">Address Line 1: </label>
                     <input id="billing-address-1" /></p>
                 

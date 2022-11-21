@@ -1,5 +1,5 @@
 <div id="Page">
-  <h1>Hello, {{currentUser.Name}}</h1>
+  
 
   <div *ngIf="!loggedIn">
     <app-login></app-login>
@@ -7,6 +7,7 @@
   
   
   <div *ngIf="loggedIn">
+    <h1>Hello, {{currentUser.Name}}</h1>
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-2">

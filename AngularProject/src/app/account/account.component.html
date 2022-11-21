@@ -1,11 +1,12 @@
 <div id="Page">
-    <h1>Hello, {{currentUser.Name}}</h1>
+    
 
     <div *ngIf="!loggedIn">
         <app-login></app-login>
     </div>
     
     <div *ngIf="loggedIn">
+        <h1>Hello, {{currentUser.Name}}</h1>
         <p>{{currentUser.Name}}</p>
         <p>{{currentUser.Email}}</p>
         <div *ngIf="!guestUser">
