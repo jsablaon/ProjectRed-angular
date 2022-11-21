@@ -19,7 +19,7 @@
       </div>
       <div class="row">
         <div class="col-sm-2">
-          <input type="text" placeholder="keywords">
+          <input #keywordInput type="text" placeholder="keywords">
         </div>
         <div class="col-sm-2">
           <input #zipcodeInput type="text" placeholder="Type a zip (ex: 98007)">
@@ -27,7 +27,7 @@
       </div>
     </div>
     <br><br>
-    <button id="searchBtn">Find Gifts!</button>
+    <button id="searchBtn" (click)="findItems()">Find Gifts!</button>
     <button id="searchBtn" (click)="findStores()">Find Stores!</button>  
     <br><br>
  <br>
@@ -49,10 +49,13 @@
     <h2>Products</h2>
     <ul class="targetItems">
       <li *ngFor="let targetItem of targetItems">
-        <div><img class="images" src={{targetItem.itemImage}}/></div>
-        <div class="name">{{targetItem.itemName}}</div>
-        <div class="price">price: {{targetItem.itemPrice}}</div>
-        <div class="video"><a href={{targetItem.itemVideo}}>Video Link</a></div>
+        <div class="itemInfo" (click)="selectItem(targetItem.userId, targetItem.storeId, targetItem.itemId)">
+          <div><img class="images" src={{targetItem.itemImage}}/></div>
+          <div class="name">{{targetItem.itemName}}</div>
+          <div class="price">price: {{targetItem.itemPrice}}</div>
+          <div class="itemId">itemId: {{targetItem.itemId}}</div>
+          <div class="video"><a href={{targetItem.itemVideo}}>Video Link</a></div>
+        </div>
       </li>
     </ul>
   </div>
