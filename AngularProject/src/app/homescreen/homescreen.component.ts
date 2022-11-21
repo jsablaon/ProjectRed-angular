@@ -5,7 +5,6 @@ import { TestListService } from '../test-list.service';
 import { User } from '../user';
 import { UserService } from '../user.service'
 
-
 import { TargetService } from '../item.service';
 import { TargetItem } from '../item'
 import { TargetStore } from '../item'
@@ -18,6 +17,7 @@ import { TargetStore } from '../item'
 })
 export class HomescreenComponent implements OnInit {
   @ViewChild('zipcodeInput') zipcodeInput: ElementRef;
+  @ViewChild('keywordInput') keywordInput: ElementRef;
 
   targetItems: TargetItem[] = [];
   targetStores: TargetStore[] = [];
@@ -25,15 +25,9 @@ export class HomescreenComponent implements OnInit {
   loggedIn: boolean = false;
   currentUser: User = { Name: '', Email: '', UserId:''};
 
-
-
   constructor(private targetService: TargetService, private testService: TestListService, private userService: UserService) { }
 
   ngOnInit(): void {
-    // this.getGifts();
-    // this.getTargetStores();
-    // this.getTargetItems();
-    
     if(sessionStorage.getItem('ID:') === null){
       this.currentUser.Name = 'Please Log In';
       this.loggedIn = false;
@@ -54,9 +48,8 @@ export class HomescreenComponent implements OnInit {
   // }
 
   // Target functions
-  getTargetItems(): void{
-    //TODO: add params for getItems(userId, storeId)
-    this.targetService.getItems()
+  getTargetItems(storeId: string, keyword: string, userId: string): void{
+    this.targetService.getItems(storeId, keyword, userId)
     .subscribe(targetItems => this.targetItems = targetItems);
     console.log(this.targetItems);
   }
@@ -75,7 +68,6 @@ export class HomescreenComponent implements OnInit {
     this.targetService.findStores(zipcode, userId)
     // should call getTargetStores()
     setTimeout( () => {
-      console.log("in the setTimeout")
       this.getTargetStores(zipcode, userId);
     }, 10000)
 
@@ -83,10 +75,27 @@ export class HomescreenComponent implements OnInit {
 
   selectStore(storeId: string):void{
     sessionStorage.setItem("storeId", storeId)
-    console.log("====================> in the selected store function")
     console.log(`++++++++++++++++++++> storeid: ${storeId}`)
     let sessionStoreId = sessionStorage.getItem("storeId")
     console.log(`session store id = ${sessionStoreId}`)
+  }
+
+  findItems():void{
+    let storeId = sessionStorage.getItem("storeId")
+    let userId = sessionStorage.getItem('ID:')
+    let keyword = this.keywordInput.nativeElement.value
+
+    console.log(`===============> storeId: ${storeId} | keyword: ${keyword}`)
+
+    this.targetService.findItems(storeId, keyword, userId)
+    setTimeout( () => {
+      this.getTargetItems(storeId, keyword, userId);
+    }, 10000)
+  }
+
+  selectItem(userId: string, storeId: string, itemId: string){
+    console.log(`++++++selected item = userId:${userId} | storeId:${storeId} | itemId:${itemId}`)
+    // TODO: add logic here to push items to cart
   }
 
   getUser(): void{      
