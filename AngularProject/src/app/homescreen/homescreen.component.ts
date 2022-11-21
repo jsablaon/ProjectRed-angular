@@ -93,8 +93,13 @@ export class HomescreenComponent implements OnInit {
     }, 10000)
   }
 
-  selectItem(userId: string, storeId: string, itemId: string){
-    console.log(`++++++selected item = userId:${userId} | storeId:${storeId} | itemId:${itemId}`)
+  selectItem(item: TargetItem){
+    console.log(`++++++selected item = userId:${item.userId} | storeId:${item.storeId} | itemId:${item.itemId} | itemPrice: ${item.itemPrice}`)
+
+    let formattedPrice = item.itemPrice.substring(1)
+    console.log(`formatted Price : ${formattedPrice}`)
+    let floatPrice = parseFloat(formattedPrice)
+    console.log(`floatPrice: ${floatPrice} | data Type: ${typeof(floatPrice)}`)
     // TODO: add logic here to push items to cart
   }
 
