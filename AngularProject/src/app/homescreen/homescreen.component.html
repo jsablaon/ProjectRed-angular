@@ -22,12 +22,13 @@
           <input type="text" placeholder="keywords">
         </div>
         <div class="col-sm-2">
-          <input type="text" placeholder="Type a zip (ex: 98007)">
+          <input #zipcodeInput type="text" placeholder="Type a zip (ex: 98007)">
         </div>
       </div>
     </div>
     <br><br>
     <button id="searchBtn">Find Gifts!</button>
+    <button id="searchBtn" (click)="findStores()">Find Stores!</button>  
     <br><br>
  <br>
 
@@ -35,9 +36,13 @@
     <h2>Nearby Stores</h2>
     <ul class="targetStores">
       <li *ngFor="let targetStore of targetStores">
-        <div class="store">Location: {{targetStore.locationName}}</div>
+        <div class="storeInfo" (click)="selectStore(targetStore.storeId)">
+          <div><img src="../../assets/targetLogo.jpeg" alt="target_logo"></div>
+          <div class="store">Location: {{targetStore.locationName}}</div>
           <div class="store">Distance: {{targetStore.distance}}</div>
           <div class="store">Phone: {{targetStore.phoneNumber}}</div>
+          <div id="storeId">StoreId: {{targetStore.storeId}}</div>
+        </div>
       </li>
     </ul>
   
