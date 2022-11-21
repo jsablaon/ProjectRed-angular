@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
 import { Gift } from '../gift';
 import { TestListService } from '../test-list.service';
@@ -17,6 +17,8 @@ import { TargetStore } from '../item'
   styleUrls: ['./homescreen.component.css']
 })
 export class HomescreenComponent implements OnInit {
+  @ViewChild('zipcodeInput') zipcodeInput: ElementRef;
+
   targetItems: TargetItem[] = [];
   targetStores: TargetStore[] = [];
 
@@ -29,8 +31,8 @@ export class HomescreenComponent implements OnInit {
 
   ngOnInit(): void {
     // this.getGifts();
-    this.getTargetStores();
-    this.getTargetItems();
+    // this.getTargetStores();
+    // this.getTargetItems();
     
     if(sessionStorage.getItem('ID:') === null){
       this.currentUser.Name = 'Please Log In';
@@ -59,10 +61,32 @@ export class HomescreenComponent implements OnInit {
     console.log(this.targetItems);
   }
 
-  getTargetStores(): void{
-    this.targetService.getStores()
+  getTargetStores(zip: string, userId: string): void{
+    this.targetService.getStores(zip, userId)
     .subscribe(targetStores => this.targetStores = targetStores);
     console.log(this.targetStores);
+  }
+
+  findStores():void{
+    console.log("===========> finding stores...", this.zipcodeInput.nativeElement.value)
+    let zipcode: string = this.zipcodeInput.nativeElement.value
+    let userId: string = sessionStorage.getItem('ID:')
+    console.log(`+++++++++++++++++++++++> userId: ${userId}`)
+    this.targetService.findStores(zipcode, userId)
+    // should call getTargetStores()
+    setTimeout( () => {
+      console.log("in the setTimeout")
+      this.getTargetStores(zipcode, userId);
+    }, 10000)
+
+  }
+
+  selectStore(storeId: string):void{
+    sessionStorage.setItem("storeId", storeId)
+    console.log("====================> in the selected store function")
+    console.log(`++++++++++++++++++++> storeid: ${storeId}`)
+    let sessionStoreId = sessionStorage.getItem("storeId")
+    console.log(`session store id = ${sessionStoreId}`)
   }
 
   getUser(): void{      

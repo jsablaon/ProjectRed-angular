@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import {Item} from './item';
 import {TargetItem} from './item'
 import {TargetStore} from './item'
+import { RandomStoresObject } from './randomObjects';
 
 
 import {ITEMS} from './mock-items';
@@ -88,9 +89,18 @@ export class TargetService {
 
 
   // stores
-  getStores(): Observable<TargetStore[]> {
-    //TODO: parse userid and storeid
-    return this.http.get<TargetStore[]>('http://localhost:3000/targetapi/getstores?userId=1&zip=98007');
+  getStores(zip: string, userId: string): Observable<TargetStore[]> {
+    return this.http.get<TargetStore[]>(`http://localhost:3000/targetapi/getstores?userId=${userId}&zip=${zip}`);
+  }
+
+  findStores(zip: string, userId: string){
+    let urlStr: string = `zipcode is ${zip} | userId is ${userId}`;
+    console.log(`${urlStr}`)
+    urlStr = `http://localhost:3000/targetapi/savetargetstore?userId=${userId}&zip=${zip}`
+    console.log(`urlStr is ${urlStr}`)
+    this.http.post<{name:string}>(urlStr, userId).subscribe((res)=>{
+      console.log(res)
+    })
   }
 }
 // end of Target Service
