@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CartItem } from '../item';
 import { Item } from '../item';
 import { ItemService } from '../item.service'
 
@@ -10,7 +11,7 @@ import { ItemService } from '../item.service'
 })
 export class CheckoutComponent implements OnInit {
 
-  items: Item[] = [];
+  items: CartItem[] = [];
   subtotal:number = 0;
   loggedIn: boolean = false;
   currentUser: string = 'Please Log In';
@@ -30,15 +31,19 @@ export class CheckoutComponent implements OnInit {
   }
 
   getItems(): void {
+    this.items = [];
     this.subtotal = 0;
-    this.itemService.getItems().subscribe((items): Item[] => {
+    this.itemService.getItems().subscribe((items): CartItem[] => {
       
       //calculates subtotal
       items.forEach((item) => {
-        this.subtotal += item.price * item.qty;
+        if(item.userId == sessionStorage.getItem('ID:')){
+          this.items.push(item);
+          this.subtotal += item.itemPrice * item.itemQty;
+        }
       });
 
-      return this.items = items;
+      return this.items;
     });
   }
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
+import {CartItem} from './item';
 import {Item} from './item';
 import {TargetItem} from './item'
 import {TargetStore} from './item'
@@ -15,25 +16,25 @@ export class ItemService {
 
   constructor( private http: HttpClient) { }
 
-  getItems(): Observable<Item[]> {
-    return this.http.get<Item[]>('http://localhost:3000/items');
+  getItems(): Observable<CartItem[]> {
+    return this.http.get<CartItem[]>('http://localhost:3000/items');
   }
 
-  getItem(id: number): Observable<Item> {
-    return this.http.get<Item>('http://localhost:3000/items' + id);
+  getItem(id: string): Observable<CartItem> {
+    return this.http.get<CartItem>('http://localhost:3000/items' + id);
   }
 
-  updateItem(item: Item): Observable<any> {
-    console.log("item.id");
-    return this.http.put('http://localhost:3000/items/' + item.id, item);
+  updateItem(item: CartItem): Observable<any> {
+    //console.log("item.id");
+    return this.http.put('http://localhost:3000/items/' + item.itemId, item);
   }
 
-  deleteItem(id: number): Observable<string> {
+  deleteItem(id: string): Observable<string> {
     return this.http.delete<string>('http://localhost:3000/items/' + id);
   }
 
-  addItem(item: Item): Observable<Item> {
-    return this.http.post<Item>('http://localhost:3000/items', item);
+  addItem(item: CartItem): Observable<CartItem> {
+    return this.http.post<CartItem>('http://localhost:3000/items', item);
   }
 
   // getItems(): Observable<Item[]> {

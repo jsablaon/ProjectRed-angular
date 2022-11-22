@@ -23,3 +23,14 @@ export interface TargetStore {
     distance: string;
     phoneNumber: string;
 }
+
+export interface CartItem {
+    userId: string;
+    storeId: string;
+    itemId: string;
+    itemQty: number;
+    itemName: string;
+    itemPrice: number;
+    itemImage: string;
+    itemVideo: string;
+}
