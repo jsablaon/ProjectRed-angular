@@ -1,16 +1,13 @@
 <div id="Page">
     
-
-    <div *ngIf="!loggedIn">
-        <app-login></app-login>
-    </div>
-    
     <div *ngIf="loggedIn">
         <h1>Hello, {{currentUser.Name}}</h1>
         <p>{{currentUser.Name}}</p>
         <p>{{currentUser.Email}}</p>
         <div *ngIf="!guestUser">
-            <a routerLink="/EditAccount">Edit Account</a>
+            <button id="editLink">
+                <a routerLink="/EditAccount">Edit Account</a>
+            </button>
         </div>
         <app-login></app-login>
     </div>
