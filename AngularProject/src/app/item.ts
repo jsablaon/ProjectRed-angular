@@ -36,8 +36,8 @@ export interface CartItem {
 }
 
 export interface Carts {
-    userId: string;
     cartId: string;
+    userId: string;    
     name: string;
     billingAddress: string;
     shippingAddress: string;
