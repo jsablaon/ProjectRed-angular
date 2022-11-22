@@ -20,76 +20,73 @@
                     <h2>Shipping Address</h2>
 
                     <label for="shipping-name">Name: </label><br>
-                    <input id="shipping-name" /><br>
+                    <input id="shipping-name" #shippingName/><br>
                     <br>
                     <label for="shipping-address-1">Address Line 1: </label><br>
-                    <input id="shipping-address-1" /><br>
+                    <input id="shipping-address-1" #shippingAddress1/><br>
                     <br>
                     <label for="shipping-address-2">Address Line 2: </label><br>
-                    <input id="shipping-address-2" /><br>
+                    <input id="shipping-address-2" #shippingAddress2/><br>
                     <br>
                     <label for="shipping-city">City: </label><br>
-                    <input id="shipping-city" /><br>
+                    <input id="shipping-city" #shippingCity/><br>
                     <br>
                     <label for="shipping-state">State/Province: </label><br>
-                    <input id="shipping-state" /><br>
+                    <input id="shipping-state" #shippingState/><br>
                     <br>
                     <label for="shipping-zip">Zip Code: </label><br>
-                    <input maxlength="10" id="shipping-zip" /><br>
+                    <input maxlength="10" id="shipping-zip" #shippingZip/><br>
                     <br>
                     <label for="shipping-country">Country: </label><br>
-                    <input id="shipping-country" /><br>
-                    <br>
-                    <label for="shipping-phone">Telephone: </label><br>
-                    <input id="shipping-phone" /><br>
+                    <input id="shipping-country" #shippingCountry/><br>
                     <br>
                 </div>
                 <div id="billing" class="col">
                     <h2>Billing Address</h2>
 
                     <label for="billing-name">Name: </label><br>
-                    <input id="billing-name" /><br>
+                    <input id="billing-name" #billingName/><br>
                     <br>
                     <label for="billing-address-1">Address Line 1: </label><br>
-                    <input id="billing-address-1" /><br>
+                    <input id="billing-address-1" #billingAddress1/><br>
                     <br>
                     <label for="billing-address-2">Address Line 2: </label><br>
-                    <input id="billing-address-2" /><br>
+                    <input id="billing-address-2" #billingAddress2/><br>
                     <br>
                     <label for="billing-city">City: </label><br>
-                    <input id="billing-city" /><br>
+                    <input id="billing-city" #billingCity/><br>
                     <br>
                     <label for="billing-state">State/Province: </label><br>
-                    <input id="billing-state" /><br>
+                    <input id="billing-state" #billingState/><br>
                     <br>
                     <label for="billing-zip">Zip Code: </label><br>
-                    <input maxlength="10" id="billing-zip" /><br>
+                    <input maxlength="10" id="billing-zip" #billingZip/><br>
                     <br>
                     <label for="billing-country">Country: </label><br>
-                    <input id="billing-country" /><br>
+                    <input id="billing-country" #billingCountry/><br>
                     <br>
                     <label for="billing-phone">Telephone: </label><br>
-                    <input id="billing-phone" /><br>
+                    <input id="billing-phone" #billingPhone/><br>
                     <br>
                 </div>
                 <div id="payment" class="col">
                     <h2>Payment Info</h2>
 
                     <label for="card-number">Card Number: </label><br>
-                    <input id="card-number" placeholder="0000 0000 0000 0000"/><br>
+                    <input id="card-number" placeholder="0000 0000 0000 0000" #cardNumber/><br>
                     <br>
-                    <label for="card-experation">Experation Date: </label><br>
-                    <input type="month" id="card-experation"/><br>
+                    <label for="card-expiration">Expiration Date: </label><br>
+                    <input type="month" id="card-expiration" #cardExpiration/><br>
                     <br>
                     <label for="card-security">CCV/CVV: </label><br>
-                    <input id="card-security" placeholder="000"/><br>
+                    <input id="card-security" placeholder="000" #cardCsv/><br>
                     <br>
                 </div>
             </div>
         </div>
         <br>
         <br>
-        <button id="payBtn">Finish & Pay</button>
+        <button (click)="finalizeCheckout()" id="payBtn" routerLink="/Home">Finish & Pay</button>
     </div>
     
 </div>

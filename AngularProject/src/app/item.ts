@@ -34,3 +34,12 @@ export interface CartItem {
     itemImage: string;
     itemVideo: string;
 }
+
+export interface Carts {
+    cartId: string;
+    userId: string;
+    billingAddress: string;
+    shippingAddress: string;
+    paymentInfo: string;
+    items: CartItem[];
+}
