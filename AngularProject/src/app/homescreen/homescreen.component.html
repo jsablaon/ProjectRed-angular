@@ -1,10 +1,5 @@
 <div id="Page">
   
-
-  <div *ngIf="!loggedIn">
-    <app-login></app-login>
-  </div>
-  
   
   <div *ngIf="loggedIn">
     <h1>Hello, {{currentUser.Name}}</h1>
