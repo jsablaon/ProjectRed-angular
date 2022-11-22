@@ -6,9 +6,9 @@
         <ul class="items">
             <li *ngFor="let item of items">
                <span>
-                    <a routerLink="/detail/{{item.id}}"><div class="badge">{{item.name}}</div></a>
+                    <a routerLink="/detail/{{item.id}}"><div class="badge">{{item.itemName}}</div></a>
                     <div>
-                        <pre><strong>Qty:</strong> {{item.qty}}  <strong>Price:</strong> ${{(item.price * item.qty).toFixed(2)}}</pre>       
+                        <pre><strong>Qty:</strong> {{item.itemQty}}  <strong>Price:</strong> ${{(item.itemPrice * item.itemQty).toFixed(2)}}</pre>       
                     </div> 
                 </span>           
             </li>        
