@@ -31,15 +31,19 @@ export class CheckoutComponent implements OnInit {
   }
 
   getItems(): void {
+    this.items = [];
     this.subtotal = 0;
     this.itemService.getItems().subscribe((items): CartItem[] => {
       
       //calculates subtotal
       items.forEach((item) => {
-        this.subtotal += item.itemPrice * item.itemQty;
+        if(item.userId == sessionStorage.getItem('ID:')){
+          this.items.push(item);
+          this.subtotal += item.itemPrice * item.itemQty;
+        }
       });
 
-      return this.items = items;
+      return this.items;
     });
   }
 

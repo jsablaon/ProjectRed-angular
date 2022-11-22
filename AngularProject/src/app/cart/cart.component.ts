@@ -13,7 +13,7 @@ import { ItemService } from '../item.service'
 
 export class CartComponent implements OnInit {
   items: CartItem[] = [];
-  subtotal:number = 0;
+  subtotal: number = 0;
   loggedIn: boolean = false;
   currentUser: string = 'Please Log In';
 
@@ -21,7 +21,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getItems();
-
+    
     if(sessionStorage.getItem('ID:') === null){
       this.loggedIn = false;
     }
@@ -33,16 +33,21 @@ export class CartComponent implements OnInit {
 
 
   getItems(): void {
+    this.items = [];
     this.subtotal = 0;
     this.itemService.getItems().subscribe((cartItems): CartItem[] => {
       
       //calculates subtotal
       cartItems.forEach((item) => {
-        this.subtotal += item.itemPrice * item.itemQty;
-        console.log(this.subtotal);
+        if(item.userId == sessionStorage.getItem('ID:')){
+          this.items.push(item);
+          this.subtotal += item.itemPrice * item.itemQty;
+          //console.log(this.subtotal);
+        }
+        
       });
 
-      return this.items = cartItems;
+      return this.items;
     });
   }
 
