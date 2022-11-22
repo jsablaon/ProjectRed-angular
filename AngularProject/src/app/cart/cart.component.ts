@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartItem } from '../item';
 
 import { Item } from '../item';
 import { ItemService } from '../item.service'
@@ -11,7 +12,7 @@ import { ItemService } from '../item.service'
 
 
 export class CartComponent implements OnInit {
-  items: Item[] = [];
+  items: CartItem[] = [];
   subtotal:number = 0;
   loggedIn: boolean = false;
   currentUser: string = 'Please Log In';
@@ -33,18 +34,19 @@ export class CartComponent implements OnInit {
 
   getItems(): void {
     this.subtotal = 0;
-    this.itemService.getItems().subscribe((items): Item[] => {
+    this.itemService.getItems().subscribe((cartItems): CartItem[] => {
       
       //calculates subtotal
-      items.forEach((item) => {
-        this.subtotal += item.price * item.qty;
+      cartItems.forEach((item) => {
+        this.subtotal += item.itemPrice * item.itemQty;
+        console.log(this.subtotal);
       });
 
-      return this.items = items;
+      return this.items = cartItems;
     });
   }
 
-  updateItem(item: Item): void{
+  updateItem(item: CartItem): void{
     if(item){
       this.itemService.updateItem(item).subscribe();
     }
@@ -52,10 +54,10 @@ export class CartComponent implements OnInit {
     this.getItems();
   }
 
-  delete(item: Item): void{
+  delete(item: CartItem): void{
     console.log("read");
     this.items = this.items.filter(h => h !== item);
-    this.itemService.deleteItem(item.id).subscribe();
+    this.itemService.deleteItem(item.itemId).subscribe();
     this.getItems();
   }
 
