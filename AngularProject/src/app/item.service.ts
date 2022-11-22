@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-import {CartItem} from './item';
-import {Item} from './item';
-import {TargetItem} from './item'
-import {TargetStore} from './item'
+import {CartItem, Carts, Item, TargetItem, TargetStore} from './item';
 import { RandomStoresObject } from './randomObjects';
 
 import {ITEMS} from './mock-items';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { CartComponent } from './cart/cart.component';
 
 @Injectable({ providedIn: 'root' })
 export class ItemService {
@@ -35,6 +33,14 @@ export class ItemService {
 
   addItem(item: CartItem): Observable<CartItem> {
     return this.http.post<CartItem>('http://localhost:3000/items', item);
+  }
+
+  addCart(cart: Carts): Observable<Carts> {
+    return this.http.post<Carts>('http://localhost:3000/cart', cart);
+  }
+
+  getCarts(): Observable<Carts[]> {
+    return this.http.get<Carts[]>('http://localhost:3000/cart');
   }
 
   // getItems(): Observable<Item[]> {
