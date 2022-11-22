@@ -13,6 +13,7 @@ import { ItemService } from '../item.service'
 
 export class CartComponent implements OnInit {
   items: CartItem[] = [];
+  fakeItem: CartItem;
   subtotal: number = 0;
   loggedIn: boolean = false;
   currentUser: string = 'Please Log In';
@@ -20,6 +21,17 @@ export class CartComponent implements OnInit {
   constructor(private itemService: ItemService) { }
 
   ngOnInit(): void {
+    // let fakeItem = {
+    //   userId: sessionStorage.getItem('ID:'),
+    //   storeId: '12633',
+    //   itemId: '2627',
+    //   itemQty: 1,
+    //   itemName: 'string',
+    //   itemPrice: 2.94,
+    //   itemImage: 'https://www.w3schools.com/images/w3schools_green.jpg',
+    //   itemVideo: 'a',
+    // };
+    // this.itemService.addItem(fakeItem).subscribe();
     this.getItems();
     
     if(sessionStorage.getItem('ID:') === null){
@@ -28,6 +40,7 @@ export class CartComponent implements OnInit {
     else {
       this.loggedIn = true;
       this.currentUser = 'My Cart';
+
     }
   }
 
@@ -74,7 +87,7 @@ export class CartComponent implements OnInit {
   }
 
   delete(item: CartItem): void{
-    console.log("read");
+    //console.log("read");
     this.items = this.items.filter(h => h !== item);
     this.itemService.deleteItem(item.itemId).subscribe();
     this.getItems();
