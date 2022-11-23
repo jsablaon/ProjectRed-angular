@@ -1,16 +1,15 @@
-<div *ngIf="!loggedIn">
-    <app-login></app-login>
+<div id="Page">
+    <div *ngIf="loggedIn">
+        <h1>{{currentUser.Name}}</h1>
+        <div>
+            <label for="users-name">Name: </label>
+            <input id="users-name" value={{currentUser.Name}} #usersName/> 
+        </div>
+        <div>
+            <label for="users-email">Email: </label>
+            <input id="users-email" value={{currentUser.Email}} #usersEmail/> 
+        </div>
+        <br>
+        <button id="editBtn" (click)="updateUser()">Accept Changes</button>
+    </div>
 </div>
-
-<h1>Hello, {{currentUser.Name}}</h1>
-
-<div>
-    <label for="users-name">Name: </label>
-    <input id="users-name" value={{currentUser.Name}} #usersName/> 
-</div>
-<div>
-    <label for="users-email">Email: </label>
-    <input id="users-email" value={{currentUser.Email}} #usersEmail/> 
-</div>
-
-<button (click)="updateUser()">Accept Changes</button>

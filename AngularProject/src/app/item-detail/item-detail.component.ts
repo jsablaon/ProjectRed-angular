@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
+import {CartItem} from '../item';
 import {Item} from '../item';
 import {ItemService} from '../item.service';
 
@@ -11,7 +12,7 @@ import {ItemService} from '../item.service';
   styleUrls: ['./item-detail.component.css']
 })
 export class ItemDetailComponent implements OnInit {
-  item: Item | undefined;
+  item: CartItem | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,7 +24,7 @@ export class ItemDetailComponent implements OnInit {
     this.getItem();
   }
   getItem(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id = this.route.snapshot.paramMap.get('id');
     this.itemService.getItem(id).subscribe(item => this.item = item)
   }
 

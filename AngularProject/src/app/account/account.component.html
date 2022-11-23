@@ -1,14 +1,15 @@
-<h1>Hello, {{currentUser.Name}}</h1>
-
-<div *ngIf="!loggedIn">
-    <app-login></app-login>
+<div id="Page">
+    
+    <div *ngIf="loggedIn">
+        <h1>Hello, {{currentUser.Name}}</h1>
+        <p>{{currentUser.Name}}</p>
+        <p>{{currentUser.Email}}</p>
+        <div *ngIf="!guestUser">
+            <button id="editLink">
+                <a routerLink="/EditAccount">Edit Account</a>
+            </button>
+        </div>
+        <app-login></app-login>
+    </div>
 </div>
 
-<div *ngIf="loggedIn">
-    <ul>
-        <li><a routerLink="/EditAccount">Edit Account</a></li>
-        <li>Favorite Orders</li>
-        <li>Logout</li>
-    </ul>
-    <app-login></app-login>
-</div>

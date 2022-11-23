@@ -7,14 +7,67 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<nav>
-  <a routerLink="/Home">Home</a><br>
-  <a routerLink="/Cart">Cart</a><br>
-  <a routerLink="/Checkout">Checkout</a><br>
-  <a routerLink="/Account">Account</a><br>
-</nav>
+<div class="startContainer">
+  <div>
+      <div class="sideBySide">
+        <img rel="image/png" src="assets/icon.png">
+        <p id="font"><b>EarlyBird</b></p>
+      </div>
+      <p id="big_font" class="text-lg-right text-center">Deliver gifts to your loved ones</p>
+      <div *ngIf="!loggedIn">
+        <app-login></app-login>
+      </div>
+      <div *ngIf="loggedIn">
+        <nav>
+          <a id="btnNav" routerLink="/Home">Home</a>
+          <a id="btnNav" routerLink="/Cart">Cart</a>
+          <a id="btnNav" routerLink="/Account">Account</a>
+          <a id="btnNav" routerLink="/Login">Login</a>
+        </nav>
+      </div>
+      <br>
+  </div>
+</div>
 
 <router-outlet></router-outlet>
+
+<div id="Page">
+  <div *ngIf="!loggedIn">
+    <div class="middleContainer">
+      <div class="sideBySide">
+          <div class="centerDriver-Parter">
+              <img class="driver-partner" rel="image/png" src="assets/driver.png">
+              <h1 id="addText"><b>Become a Delivery Driver</b></h1>
+              <p class="text">You'll make reliable money—working anytime, anywhere.</p>
+          </div>
+    
+          <div class="centerDriver-Parter">
+              <img class="driver-partner" rel="image/png" src="assets/partner.png">
+              <h1 id="addText"><b>Become a Local Store Partner</b></h1>
+              <p class="text">Grow your business and reach new customers by partnering with us.</p>
+          </div>
+      </div>
+    </div>
+    
+    <div class="endContainer">
+      <div class="sideBySide">
+          <div>
+              <img class="gifts" rel="image/png" src="assets/gift_ideas.png">
+          </div>
+          <div style="margin: 10% 0 10% 10%;">
+              <h1><b>Every Gift Welcome</b></h1>
+              <p class="text" style="padding-right: 18%">From your neighborhood local store to the big brands, choose from over 300,000 local and national favorites across the U.S., Canada and Australia.</p>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="footer">
+  <p>© 2022 EarlyBird</p>
+</div>
 
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
