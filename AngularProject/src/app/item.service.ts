@@ -24,11 +24,11 @@ export class ItemService {
 
   updateItem(item: CartItem): Observable<any> {
     //console.log("item.id");
-    return this.http.put('http://localhost:3000/items/' + item.itemId, item);
+    return this.http.put('http://localhost:3000/items/' + sessionStorage.getItem('ID:'), item);
   }
 
-  deleteItem(id: string): Observable<string> {
-    return this.http.delete<string>('http://localhost:3000/items/' + id);
+  deleteItem(item: CartItem): Observable<any> {
+    return this.http.delete('http://localhost:3000/items/' + item.itemId);
   }
 
   addItem(item: CartItem): Observable<CartItem> {

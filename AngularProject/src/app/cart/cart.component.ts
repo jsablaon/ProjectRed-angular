@@ -65,13 +65,14 @@ export class CartComponent implements OnInit {
   }
 
   updateItem(item: CartItem): void{
-    this.subtotal = 0;
+    
     if(item){
       this.itemService.updateItem(item).subscribe();
     }
 
     this.itemService.getItems().subscribe((cartItems): CartItem[] => {
       //calculates subtotal
+      this.subtotal = 0;
       cartItems.forEach((item) => {
         if(item.userId === sessionStorage.getItem('ID:')){
           this.subtotal += item.itemPrice * item.itemQty;
@@ -88,9 +89,24 @@ export class CartComponent implements OnInit {
 
   delete(item: CartItem): void{
     //console.log("read");
-    this.items = this.items.filter(h => h !== item);
-    this.itemService.deleteItem(item.itemId).subscribe();
-    this.getItems();
+    this.subtotal = 0;
+    
+    this.itemService.deleteItem(item).subscribe();
+
+    this.itemService.getItems().subscribe((cartItems): CartItem[] => {
+      //calculates subtotal
+      this.items = [];
+      cartItems.forEach((item) => {
+        if(item.userId === sessionStorage.getItem('ID:')){
+          this.items.push(item);
+          this.subtotal += item.itemPrice * item.itemQty;
+          //console.log(this.items);
+        }
+        
+      });
+
+      return this.items;
+    }); 
   }
 
 }
