@@ -37,7 +37,7 @@ export class ItemService {
   }
 
   addCart(cart: Carts): Observable<Carts> {
-    console.log(cart);
+    //console.log(cart);
     return this.http.post<Carts>('http://localhost:3000/cart', cart);
   }
 
