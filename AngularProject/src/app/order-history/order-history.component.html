@@ -1,1 +1,13 @@
-<p>order-history works!</p>
+<div id="Page">
+
+
+    <div *ngIf="loggedIn">
+        <h1>{{currentUser.Name}}</h1>
+        <ul class="allCarts">
+            <li *ngFor="let carts of allCarts">
+                <p>{{carts.timeStamp}}</p>
+            </li>        
+        </ul>
+    </div>
+
+</div>

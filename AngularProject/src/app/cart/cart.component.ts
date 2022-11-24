@@ -29,8 +29,8 @@ export class CartComponent implements OnInit {
     //   itemVideo: 'a',
     // };
     // this.itemService.addItem(fakeItem).subscribe();
-    
-    if(sessionStorage.getItem('ID:') === null){
+
+    if (sessionStorage.getItem('ID:') === null) {
       this.loggedIn = false;
     }
     else {
@@ -47,20 +47,20 @@ export class CartComponent implements OnInit {
     this.updateSub();
   }
 
-  updateSub(): void{
+  updateSub(): void {
     this.subtotal = 0;
     this.items.forEach((pItem) => {
-      this.subtotal += pItem.itemPrice * pItem.itemQty;      
+      this.subtotal += pItem.itemPrice * pItem.itemQty;
     });
   }
 
-  updateItem(item: CartItem): void{
+  updateItem(item: CartItem): void {
     //update item
     this.itemService.updateItem(item).subscribe();
     this.updateSub();
   }
 
-  delete(item: CartItem): void{
+  delete(item: CartItem): void {
     this.itemService.deleteItem(item).subscribe();
 
     let newList = this.items.filter(data => data != item);
