@@ -27,9 +27,9 @@ export class ItemService {
     return this.http.put('http://localhost:3000/items/' + sessionStorage.getItem('ID:'), item);
   }
 
-  deleteItem(item: CartItem): Observable<any> {
+  deleteItem(item: CartItem): Observable<string> {
     //console.log(item.itemId);
-    return this.http.delete('http://localhost:3000/items/' + item.itemId);
+    return this.http.delete<string>(`http://localhost:3000/deleteitems?userId=${item.userId}&itemId=${item.itemId}&itemQty=${item.itemQty}`);
   }
 
   addItem(item: CartItem): Observable<CartItem> {

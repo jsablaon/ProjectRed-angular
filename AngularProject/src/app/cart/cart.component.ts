@@ -24,9 +24,9 @@ export class CartComponent implements OnInit {
     // let fakeItem = {
     //   userId: sessionStorage.getItem('ID:'),
     //   storeId: '12633',
-    //   itemId: '2623273',
+    //   itemId: '262355273',
     //   itemQty: 1,
-    //   itemName:'ding',
+    //   itemName:'di',
     //   itemPrice: 2.94,
     //   itemImage: 'https://www.w3schools.com/images/w3schools_green.jpg',
     //   itemVideo: 'a',
