@@ -142,6 +142,7 @@ export class CheckoutComponent implements OnInit {
     let finalCart: Carts = {
         cartId: uuidv4(),
         userId: sessionStorage.getItem('ID:'),
+        timeStamp: new Date().toISOString(),
         billingAddress: billingInfo,
         shippingAddress: shippingInfo,
         paymentInfo: paymentInfo,
