@@ -53,13 +53,12 @@ export class CartComponent implements OnInit {
       //calculates subtotal
       cartItems.forEach((item) => {
         if(item.userId === sessionStorage.getItem('ID:')){
-          this.items.push(item);
+          //this.items.push(item);
           this.subtotal += item.itemPrice * item.itemQty;
-          //console.log(this.items);
         }
         
       });
-
+      this.items = cartItems;
       return this.items;
     });
   }
@@ -78,9 +77,7 @@ export class CartComponent implements OnInit {
   }
 
   delete(item: CartItem): void{
-    //console.log("read");
     this.subtotal = 0;
-    //console.log(item);
     this.itemService.deleteItem(item).subscribe();
 
     let newList = this.items.filter(data => data != item);
