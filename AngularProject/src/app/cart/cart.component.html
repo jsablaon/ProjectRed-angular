@@ -11,7 +11,7 @@
                 <div id="cartItems">
                     <label for="item-qty">Qty: </label>
                     <input type="number" min="1" max="100" id="item-qty" [(ngModel)]="item.itemQty" 
-                    placeholder="Item qty" (ngModelChange)="updateItem(item);"/>
+                    placeholder="Item qty" (ngModelChange)="updateItem(item)"/>
                     <button (click)="delete(item)">Remove Item</button><br>  
                     <p><em>Price: ${{(item.itemPrice * item.itemQty).toFixed(2)}}</em></p>
                     <br>     

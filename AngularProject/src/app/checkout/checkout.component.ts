@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-
-import { CartItem, Carts } from '../item';
-import { Item } from '../item';
+import { CartItem, Carts, Item } from '../item';
 import { ItemService } from '../item.service';
 import {v4 as uuidv4} from 'uuid';
 
@@ -42,14 +40,15 @@ export class CheckoutComponent implements OnInit {
   constructor(private itemService: ItemService) { }
 
   ngOnInit(): void {
-    this.getItems();
-
+    
     if(sessionStorage.getItem('ID:') === null){
       this.loggedIn = false;
     }
     else {
       this.loggedIn = true;
       this.currentUser = 'Checkout';
+      this.getItems();
+
     }
   }
 
@@ -143,6 +142,7 @@ export class CheckoutComponent implements OnInit {
     let finalCart: Carts = {
         cartId: uuidv4(),
         userId: sessionStorage.getItem('ID:'),
+        timeStamp: new Date().toISOString(),
         billingAddress: billingInfo,
         shippingAddress: shippingInfo,
         paymentInfo: paymentInfo,
