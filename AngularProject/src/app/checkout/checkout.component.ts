@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-
-import { CartItem, Carts } from '../item';
-import { Item } from '../item';
+import { CartItem, Carts, Item } from '../item';
 import { ItemService } from '../item.service';
 import {v4 as uuidv4} from 'uuid';
 

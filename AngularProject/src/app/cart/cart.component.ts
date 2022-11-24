@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartItem } from '../item';
-
-import { Item } from '../item';
+import { CartItem, Item } from '../item';
 import { ItemService } from '../item.service'
 
 @Component({
@@ -13,7 +11,6 @@ import { ItemService } from '../item.service'
 
 export class CartComponent implements OnInit {
   items: CartItem[] = [];
-  fakeItem: CartItem;
   subtotal: number = 0;
   loggedIn: boolean = false;
   currentUser: string = 'Please Log In';
@@ -33,7 +30,6 @@ export class CartComponent implements OnInit {
     // };
     // this.itemService.addItem(fakeItem).subscribe();
     
-    
     if(sessionStorage.getItem('ID:') === null){
       this.loggedIn = false;
     }
@@ -44,30 +40,28 @@ export class CartComponent implements OnInit {
     }
   }
 
-
   getItems(): void {
-    this.subtotal = 0;
     this.itemService.getItems().subscribe((cartItems): CartItem[] => {
     this.items = cartItems.filter((i) => i.userId == sessionStorage.getItem('ID:'));
       return this.items;
     });
     this.updateSub();
   }
+  
   updateSub(): void{
+    this.subtotal = 0;
     this.items.forEach((pItem) => {
       this.subtotal += pItem.itemPrice * pItem.itemQty;      
     });
   }
 
   updateItem(item: CartItem): void{
-    this.subtotal = 0;
     //update item
     this.itemService.updateItem(item).subscribe();
     this.updateSub();
   }
 
   delete(item: CartItem): void{
-    this.subtotal = 0;
     this.itemService.deleteItem(item).subscribe();
 
     let newList = this.items.filter(data => data != item);
