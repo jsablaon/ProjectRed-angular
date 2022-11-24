@@ -68,7 +68,7 @@ export class CartComponent implements OnInit {
     if(item){
       this.itemService.updateItem(item).subscribe();
     }
-    let objIndex = this.items.findIndex((obj => obj == item))
+    let objIndex = this.items.findIndex((obj => obj.itemId == item.itemId))
     this.items[objIndex] = item;
 
     this.items.forEach((item) => {
