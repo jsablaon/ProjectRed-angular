@@ -10,7 +10,7 @@
                 <a routerLink="/detail/{{item.itemId}}"><div id="itemName" class="badge">{{item.itemName}}</div></a>
                 <div id="cartItems">
                     <label for="item-qty">Qty: </label>
-                    <input type="number" min="1" max="100" id="item-qty" [(ngModel)]="item.itemQty" 
+                    <input readonly type="number" min="1" max="100" id="item-qty" [(ngModel)]="item.itemQty" 
                     placeholder="Item qty" (ngModelChange)="updateItem(item);"/>
                     <button (click)="delete(item)">Remove Item</button><br>  
                     <p><em>Price: ${{(item.itemPrice * item.itemQty).toFixed(2)}}</em></p>
