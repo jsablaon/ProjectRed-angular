@@ -5,7 +5,7 @@ import { TestListService } from '../test-list.service';
 import { User } from '../user';
 import { UserService } from '../user.service'
 
-import { TargetService } from '../item.service';
+import { TargetService, ItemService } from '../item.service';
 import { TargetItem } from '../item'
 import { TargetStore } from '../item'
 
@@ -18,6 +18,7 @@ import { TargetStore } from '../item'
 export class HomescreenComponent implements OnInit {
   @ViewChild('zipcodeInput') zipcodeInput: ElementRef;
   @ViewChild('keywordInput') keywordInput: ElementRef;
+  // @ViewChild('itemQty') itemQty: ElementRef;
 
   targetItems: TargetItem[] = [];
   targetStores: TargetStore[] = [];
@@ -25,7 +26,7 @@ export class HomescreenComponent implements OnInit {
   loggedIn: boolean = false;
   currentUser: User = { Name: '', Email: '', UserId:''};
 
-  constructor(private targetService: TargetService, private testService: TestListService, private userService: UserService) { }
+  constructor(private itemService: ItemService, private targetService: TargetService, private testService: TestListService, private userService: UserService) { }
 
   ngOnInit(): void {
     if(sessionStorage.getItem('ID:') === null){
@@ -100,12 +101,25 @@ export class HomescreenComponent implements OnInit {
     console.log(`formatted Price : ${formattedPrice}`)
     let floatPrice = parseFloat(formattedPrice)
     console.log(`floatPrice: ${floatPrice} | data Type: ${typeof(floatPrice)}`)
-    // TODO: add logic here to push items to cart
+    // add logic here to push items to server to db
+    // console.log(`itemQty = ${this.itemQty.nativeElement.value}`)
+    let selectedItem = {
+      userId: item.userId,
+      storeId: item.storeId,
+      itemId: item.itemId,
+      itemQty: 1,
+      itemName: item.itemName,
+      itemPrice: floatPrice,
+      itemImage: item.itemImage,
+      itemVideo: item.itemVideo
+    }
+    console.log(selectedItem)
+    this.itemService.addItem(selectedItem).subscribe();
   }
 
   getUser(): void{      
     this.userService.getUser(sessionStorage.getItem('ID:')).subscribe(user => this.currentUser = user);
-}
+  }
 
 }
 
