@@ -28,6 +28,7 @@ export class ItemService {
   }
 
   deleteItem(item: CartItem): Observable<any> {
+    //console.log(item.itemId);
     return this.http.delete('http://localhost:3000/items/' + item.itemId);
   }
 
