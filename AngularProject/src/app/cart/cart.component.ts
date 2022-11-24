@@ -46,34 +46,24 @@ export class CartComponent implements OnInit {
 
 
   getItems(): void {
-    
     this.subtotal = 0;
     this.itemService.getItems().subscribe((cartItems): CartItem[] => {
-      
-      //calculates subtotal
-      cartItems.forEach((item) => {
-        if(item.userId === sessionStorage.getItem('ID:')){
-          this.items.push(item);
-          this.subtotal += item.itemPrice * item.itemQty;
-        }
-        
-      });
-      
+    this.items = cartItems.filter((i) => i.userId !== sessionStorage.getItem('ID:'));
       return this.items;
+    });
+    this.updateSub();
+  }
+  updateSub(): void{
+    this.items.forEach((pItem) => {
+      this.subtotal += pItem.itemPrice * pItem.itemQty;      
     });
   }
 
   updateItem(item: CartItem): void{
     this.subtotal = 0;
-    if(item){
-      this.itemService.updateItem(item).subscribe();
-    }
-    // let objIndex = this.items.findIndex((obj => obj.itemId == item.itemId))
-    // this.items[objIndex] = item;
-
-    this.items.forEach((item) => {
-      this.subtotal += item.itemPrice * item.itemQty;      
-    });
+    //update item
+    this.itemService.updateItem(item).subscribe();
+    this.updateSub();
   }
 
   delete(item: CartItem): void{
@@ -82,9 +72,7 @@ export class CartComponent implements OnInit {
 
     let newList = this.items.filter(data => data != item);
     this.items = newList;
-    this.items.forEach((item) => {
-      this.subtotal += item.itemPrice * item.itemQty;      
-    });
+    this.updateSub();
   }
 
 }
