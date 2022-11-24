@@ -42,14 +42,15 @@ export class CheckoutComponent implements OnInit {
   constructor(private itemService: ItemService) { }
 
   ngOnInit(): void {
-    this.getItems();
-
+    
     if(sessionStorage.getItem('ID:') === null){
       this.loggedIn = false;
     }
     else {
       this.loggedIn = true;
       this.currentUser = 'Checkout';
+      this.getItems();
+
     }
   }
 
