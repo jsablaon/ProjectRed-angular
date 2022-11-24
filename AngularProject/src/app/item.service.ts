@@ -29,7 +29,7 @@ export class ItemService {
 
   deleteItem(item: CartItem): Observable<string> {
     //console.log(item.itemId);
-    return this.http.delete<string>(`http://localhost:3000/deleteitems?userId=${item.userId}&itemId=${item.itemId}&itemQty=${item.itemQty}`);
+    return this.http.delete<string>(`http://localhost:3000/deleteitems?userId=${item.userId}&itemId=${item.itemId}&storeId=${item.storeId}`);
   }
 
   addItem(item: CartItem): Observable<CartItem> {
