@@ -41,13 +41,13 @@ export class CartComponent implements OnInit {
   }
 
   getItems(): void {
+    
     this.itemService.getItems().subscribe((cartItems) => {
-    this.items = cartItems.filter((i) => i.userId == sessionStorage.getItem('ID:'));
-      //return this.items;
+      this.items = cartItems.filter((i) => i.userId == sessionStorage.getItem('ID:'));
     });
     this.updateSub();
   }
-  
+
   updateSub(): void{
     this.subtotal = 0;
     this.items.forEach((pItem) => {
