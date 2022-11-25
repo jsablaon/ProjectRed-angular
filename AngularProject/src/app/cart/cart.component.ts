@@ -12,6 +12,7 @@ import { ItemService } from '../item.service'
 export class CartComponent implements OnInit {
   items: CartItem[] = [];
   subtotal: number = 0;
+  shipping: number = 0;
   loggedIn: boolean = false;
   currentUser: string = 'Please Log In';
 
@@ -29,8 +30,8 @@ export class CartComponent implements OnInit {
     //   itemVideo: 'a',
     // };
     // this.itemService.addItem(fakeItem).subscribe();
-    
-    if(sessionStorage.getItem('ID:') === null){
+
+    if (sessionStorage.getItem('ID:') === null) {
       this.loggedIn = false;
     }
     else {
@@ -43,24 +44,29 @@ export class CartComponent implements OnInit {
   getItems(): void {
     this.itemService.getItems().subscribe((cartItems) => {
       this.items = cartItems.filter((i) => i.userId == sessionStorage.getItem('ID:'));
+      this.updateSub();
     });
-    this.updateSub();
+    
   }
 
-  updateSub(): void{
+  updateSub(): void {
     this.subtotal = 0;
+    this.shipping = 0;
     this.items.forEach((pItem) => {
-      this.subtotal += pItem.itemPrice * pItem.itemQty;      
+      this.subtotal += pItem.itemPrice * pItem.itemQty;
     });
+    if(this.items.length != 0){
+      this.shipping = 15.55;
+    }
   }
 
-  updateItem(item: CartItem): void{
+  updateItem(item: CartItem): void {
     //update item
     this.itemService.updateItem(item).subscribe();
     this.updateSub();
   }
 
-  delete(item: CartItem): void{
+  delete(item: CartItem): void {
     this.itemService.deleteItem(item).subscribe();
 
     let newList = this.items.filter(data => data != item);

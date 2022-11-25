@@ -30,12 +30,12 @@
                 <div id="endCost" class="col-2">
                     <p> ${{(subtotal * .095).toFixed(2)}}</p>
                     <p> ${{subtotal.toFixed(2)}}</p>
-                    <p> $15.55</p>
+                    <p> ${{shipping}}</p>
                 </div>
             </div>
         </div>
         <br>
-        <strong><p style="font-size:30px;">Total: ${{(subtotal * 1.095 + 15.55).toFixed(2)}}</p></strong>
+        <strong><p style="font-size:30px;">Total: ${{(subtotal * 1.095 + shipping).toFixed(2)}}</p></strong>
 
     <button id="checkoutBtn" routerLink="/Checkout">Checkout</button>
     </div>

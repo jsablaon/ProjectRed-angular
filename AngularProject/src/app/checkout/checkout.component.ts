@@ -33,7 +33,7 @@ export class CheckoutComponent implements OnInit {
 
 
   items: CartItem[] = [];
-  subtotal:number = 0;
+  total: number = 0;
   loggedIn: boolean = false;
   currentUser: string = 'Please Log In';
 
@@ -53,20 +53,24 @@ export class CheckoutComponent implements OnInit {
   }
 
   getItems(): void {
-    this.items = [];
-    this.subtotal = 0;
-    this.itemService.getItems().subscribe((items): CartItem[] => {
-      
-      //calculates subtotal
-      items.forEach((item) => {
-        if(item.userId == sessionStorage.getItem('ID:')){
-          this.items.push(item);
-          this.subtotal += item.itemPrice * item.itemQty;
-        }
-      });
-
-      return this.items;
+    this.itemService.getItems().subscribe((cartItems) => {
+      this.items = cartItems.filter((i) => i.userId == sessionStorage.getItem('ID:'));
+      this.updateSub();
     });
+    
+  }
+
+  updateSub(): void {
+    let subtotal: number = 0;
+    let shipping: number = 0;
+    this.items.forEach((pItem) => {
+      subtotal += pItem.itemPrice * pItem.itemQty;
+    });
+    if(this.items.length != 0){
+      shipping = 15.55;
+    }
+    this.total = Number((subtotal * 1.095 + shipping).toFixed(2));
+    
   }
 
   finalizeCheckout(): void{
@@ -143,6 +147,7 @@ export class CheckoutComponent implements OnInit {
         cartId: uuidv4(),
         userId: sessionStorage.getItem('ID:'),
         timeStamp: new Date().toISOString(),
+        cartTotal: this.total,
         billingAddress: billingInfo,
         shippingAddress: shippingInfo,
         paymentInfo: paymentInfo,

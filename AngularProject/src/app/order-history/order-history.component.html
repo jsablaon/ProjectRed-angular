@@ -1,1 +1,20 @@
-<p>order-history works!</p>
+<div id="Page">
+
+
+    <div *ngIf="loggedIn">
+        <h1>{{currentUser.Name}}</h1>
+        <ul class="allCarts">
+            <li *ngFor="let carts of allCarts">
+                <p>${{carts.cartTotal}}</p>
+                <ul class="cartItems">
+                    <li *ngFor="let items of carts.items">
+                        <img src="{{items.itemImage}}" alt="Picture of {{items.itemName}}">
+                        <p>{{items.itemName}} x{{items.itemQty}}</p>
+                    </li>
+                </ul>      
+            </li> 
+             
+        </ul>
+    </div>
+
+</div>
