@@ -53,20 +53,20 @@ export class CheckoutComponent implements OnInit {
   }
 
   getItems(): void {
-    this.items = [];
-    this.subtotal = 0;
-    this.itemService.getItems().subscribe((items): CartItem[] => {
-      
-      //calculates subtotal
-      items.forEach((item) => {
-        if(item.userId == sessionStorage.getItem('ID:')){
-          this.items.push(item);
-          this.subtotal += item.itemPrice * item.itemQty;
-        }
-      });
-
-      return this.items;
+    this.itemService.getItems().subscribe((cartItems) => {
+      this.items = cartItems.filter((i) => i.userId == sessionStorage.getItem('ID:'));
+      this.updateSub();
     });
+    
+  }
+
+  updateSub(): void {
+    this.subtotal = 0;
+    //console.log(this.items);
+    this.items.forEach((pItem) => {
+      this.subtotal += pItem.itemPrice * pItem.itemQty;
+    });
+    this.subtotal = Number((this.subtotal * 1.095 + 15.55).toFixed(2));
   }
 
   finalizeCheckout(): void{
@@ -143,6 +143,7 @@ export class CheckoutComponent implements OnInit {
         cartId: uuidv4(),
         userId: sessionStorage.getItem('ID:'),
         timeStamp: new Date().toISOString(),
+        cartTotal: this.subtotal,
         billingAddress: billingInfo,
         shippingAddress: shippingInfo,
         paymentInfo: paymentInfo,

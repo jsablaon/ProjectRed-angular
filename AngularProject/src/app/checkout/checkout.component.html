@@ -2,7 +2,7 @@
     
     <div *ngIf="loggedIn">
         <h1>{{currentUser}}</h1>
-        <strong><p style="font-size:25px">Total: ${{(subtotal * 1.095 + 15.55).toFixed(2)}}</p></strong>
+        <strong><p style="font-size:25px">Total: ${{subtotal}}</p></strong>
         <ul class="items">
             <li *ngFor="let item of items">
                <span>

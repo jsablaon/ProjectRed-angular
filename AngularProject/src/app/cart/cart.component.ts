@@ -43,12 +43,14 @@ export class CartComponent implements OnInit {
   getItems(): void {
     this.itemService.getItems().subscribe((cartItems) => {
       this.items = cartItems.filter((i) => i.userId == sessionStorage.getItem('ID:'));
+      this.updateSub();
     });
-    this.updateSub();
+    
   }
 
   updateSub(): void {
     this.subtotal = 0;
+    //console.log(this.items);
     this.items.forEach((pItem) => {
       this.subtotal += pItem.itemPrice * pItem.itemQty;
     });
