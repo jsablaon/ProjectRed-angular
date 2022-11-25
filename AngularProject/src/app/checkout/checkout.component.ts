@@ -34,6 +34,7 @@ export class CheckoutComponent implements OnInit {
 
   items: CartItem[] = [];
   subtotal:number = 0;
+  shipping: number = 0;
   loggedIn: boolean = false;
   currentUser: string = 'Please Log In';
 
@@ -62,11 +63,16 @@ export class CheckoutComponent implements OnInit {
 
   updateSub(): void {
     this.subtotal = 0;
+    this.shipping = 0;
     //console.log(this.items);
     this.items.forEach((pItem) => {
       this.subtotal += pItem.itemPrice * pItem.itemQty;
     });
-    this.subtotal = Number((this.subtotal * 1.095 + 15.55).toFixed(2));
+    if(this.items.length != 0){
+      this.shipping = 15.55;
+    }
+    this.subtotal = Number((this.subtotal * 1.095 + this.shipping).toFixed(2));
+    
   }
 
   finalizeCheckout(): void{
