@@ -33,8 +33,7 @@ export class CheckoutComponent implements OnInit {
 
 
   items: CartItem[] = [];
-  subtotal:number = 0;
-  shipping: number = 0;
+  total: number = 0;
   loggedIn: boolean = false;
   currentUser: string = 'Please Log In';
 
@@ -62,16 +61,15 @@ export class CheckoutComponent implements OnInit {
   }
 
   updateSub(): void {
-    this.subtotal = 0;
-    this.shipping = 0;
-    //console.log(this.items);
+    let subtotal: number = 0;
+    let shipping: number = 0;
     this.items.forEach((pItem) => {
-      this.subtotal += pItem.itemPrice * pItem.itemQty;
+      subtotal += pItem.itemPrice * pItem.itemQty;
     });
     if(this.items.length != 0){
-      this.shipping = 15.55;
+      shipping = 15.55;
     }
-    this.subtotal = Number((this.subtotal * 1.095 + this.shipping).toFixed(2));
+    this.total = Number((subtotal * 1.095 + shipping).toFixed(2));
     
   }
 
@@ -149,7 +147,7 @@ export class CheckoutComponent implements OnInit {
         cartId: uuidv4(),
         userId: sessionStorage.getItem('ID:'),
         timeStamp: new Date().toISOString(),
-        cartTotal: this.subtotal,
+        cartTotal: this.total,
         billingAddress: billingInfo,
         shippingAddress: shippingInfo,
         paymentInfo: paymentInfo,

@@ -19,17 +19,17 @@ export class CartComponent implements OnInit {
   constructor(private itemService: ItemService) { }
 
   ngOnInit(): void {
-    let fakeItem = {
-      userId: sessionStorage.getItem('ID:'),
-      storeId: '12633',
-      itemId: '2553373',
-      itemQty: 1,
-      itemName:'diwe',
-      itemPrice: 2.00,
-      itemImage: 'https://www.w3schools.com/images/w3schools_green.jpg',
-      itemVideo: 'a',
-    };
-    this.itemService.addItem(fakeItem).subscribe();
+    // let fakeItem = {
+    //   userId: sessionStorage.getItem('ID:'),
+    //   storeId: '12633',
+    //   itemId: '2553373',
+    //   itemQty: 1,
+    //   itemName:'diwe',
+    //   itemPrice: 2.00,
+    //   itemImage: 'https://www.w3schools.com/images/w3schools_green.jpg',
+    //   itemVideo: 'a',
+    // };
+    // this.itemService.addItem(fakeItem).subscribe();
 
     if (sessionStorage.getItem('ID:') === null) {
       this.loggedIn = false;
@@ -52,7 +52,6 @@ export class CartComponent implements OnInit {
   updateSub(): void {
     this.subtotal = 0;
     this.shipping = 0;
-    //console.log(this.items);
     this.items.forEach((pItem) => {
       this.subtotal += pItem.itemPrice * pItem.itemQty;
     });
