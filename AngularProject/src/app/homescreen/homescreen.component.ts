@@ -6,7 +6,7 @@ import { User } from '../user';
 import { UserService } from '../user.service'
 
 import { TargetService, ItemService } from '../item.service';
-import { TargetItem } from '../item'
+// import { TargetItem } from '../item'
 import { TargetStore } from '../item'
 
 
@@ -17,10 +17,7 @@ import { TargetStore } from '../item'
 })
 export class HomescreenComponent implements OnInit {
   @ViewChild('zipcodeInput') zipcodeInput: ElementRef;
-  @ViewChild('keywordInput') keywordInput: ElementRef;
-  // @ViewChild('itemQty') itemQty: ElementRef;
-
-  targetItems: TargetItem[] = [];
+  
   targetStores: TargetStore[] = [];
 
   loggedIn: boolean = false;
@@ -49,12 +46,6 @@ export class HomescreenComponent implements OnInit {
   // }
 
   // Target functions
-  getTargetItems(storeId: string, keyword: string, userId: string): void{
-    this.targetService.getItems(storeId, keyword, userId)
-    .subscribe(targetItems => this.targetItems = targetItems);
-    console.log(this.targetItems);
-  }
-
   getTargetStores(zip: string, userId: string): void{
     this.targetService.getStores(zip, userId)
     .subscribe(targetStores => this.targetStores = targetStores);
@@ -79,42 +70,6 @@ export class HomescreenComponent implements OnInit {
     console.log(`++++++++++++++++++++> storeid: ${storeId}`)
     let sessionStoreId = sessionStorage.getItem("storeId")
     console.log(`session store id = ${sessionStoreId}`)
-  }
-
-  findItems():void{
-    let storeId = sessionStorage.getItem("storeId")
-    let userId = sessionStorage.getItem('ID:')
-    let keyword = this.keywordInput.nativeElement.value
-
-    console.log(`===============> storeId: ${storeId} | keyword: ${keyword}`)
-
-    this.targetService.findItems(storeId, keyword, userId)
-    setTimeout( () => {
-      this.getTargetItems(storeId, keyword, userId);
-    }, 10000)
-  }
-
-  selectItem(item: TargetItem){
-    console.log(`++++++selected item = userId:${item.userId} | storeId:${item.storeId} | itemId:${item.itemId} | itemPrice: ${item.itemPrice}`)
-
-    let formattedPrice = item.itemPrice.substring(1)
-    console.log(`formatted Price : ${formattedPrice}`)
-    let floatPrice = parseFloat(formattedPrice)
-    console.log(`floatPrice: ${floatPrice} | data Type: ${typeof(floatPrice)}`)
-    // add logic here to push items to server to db
-    // console.log(`itemQty = ${this.itemQty.nativeElement.value}`)
-    let selectedItem = {
-      userId: item.userId,
-      storeId: item.storeId,
-      itemId: item.itemId,
-      itemQty: 1,
-      itemName: item.itemName,
-      itemPrice: floatPrice,
-      itemImage: item.itemImage,
-      itemVideo: item.itemVideo
-    }
-    console.log(selectedItem)
-    this.itemService.addItem(selectedItem).subscribe();
   }
 
   getUser(): void{      
