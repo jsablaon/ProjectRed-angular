@@ -8,6 +8,7 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { EditAccountComponent } from './edit-account/edit-account.component';
 import { LoginComponent } from './login/login.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
+import { ProductsComponent } from './products/products.component'
 
 const routes: Routes = [
   {path: 'Account', component: AccountComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'detail/:id', component: ItemDetailComponent},
   {path: 'EditAccount', component: EditAccountComponent},
   {path: 'Login', component: LoginComponent},
-  {path: 'OrderHistory', component: OrderHistoryComponent}
+  {path: 'OrderHistory', component: OrderHistoryComponent},
+  {path: 'Products', component: ProductsComponent}
 ];
 
 @NgModule({
