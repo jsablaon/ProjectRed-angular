@@ -117,11 +117,11 @@ p {
 
 }
 
-#btnNav:hover, #logoutBtn:hover, #buttonDiv:hover, #guestBtn:hover, #editLink:hover, #payBtn:hover {
+#btnNav:hover, #logoutBtn:hover, #buttonDiv:hover, #guestBtn:hover, #orderHistoryLink:hover, #editLink:hover, #payBtn:hover {
   background-color: #fff;
 }
 
-#btnNav:active, #logoutBtn:active, #buttonDiv:active, #guestBtn:active, #editLink:hover, #payBtn:hover {
+#btnNav:active, #logoutBtn:active, #buttonDiv:active, #orderHistoryLink:hover, #guestBtn:active, #editLink:hover, #payBtn:hover {
   box-shadow: #422800 2px 2px 0 0;
   transform: translate(2px, 2px);
 }
@@ -230,7 +230,7 @@ a:hover {
   color:black;
 }
 
-#payBtn, #checkoutBtn, #editLink, #editBtn, #logoutBtn, #searchBtn {
+#payBtn, #checkoutBtn, #editLink, #orderHistoryLink, #editBtn, #logoutBtn, #searchBtn {
     font-family: myriad-pro,sans-serif;
     background-color: #fbeee0;
     border: 2px solid #422800;
