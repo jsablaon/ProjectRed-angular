@@ -156,6 +156,9 @@ export class CheckoutComponent implements OnInit {
       //console.log(finalCart);
       this.itemService.addCart(finalCart).subscribe();
 
+      for (let i=0; i < this.items.length; i++){
+        this.itemService.deleteItem(this.items[i]).subscribe();
+      }
   }
 
 }
