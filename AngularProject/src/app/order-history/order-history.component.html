@@ -5,7 +5,7 @@
         <h1>{{currentUser.Name}}</h1>
         <ul class="allCarts">
             <li *ngFor="let carts of allCarts">
-                <p>${{carts.cartTotal}}</p>
+                <p>${{carts.cartTotal.toFixed(2)}}</p>
                 <ul class="cartItems">
                     <li *ngFor="let items of carts.items">
                         <img src="{{items.itemImage}}" alt="Picture of {{items.itemName}}">
