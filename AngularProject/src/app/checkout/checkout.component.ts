@@ -69,7 +69,7 @@ export class CheckoutComponent implements OnInit {
     if(this.items.length != 0){
       shipping = 15.55;
     }
-    this.total = (subtotal * 1.095 + shipping);
+    this.total = Number((subtotal * 1.095 + shipping).toFixed(2));
     
   }
 
