@@ -78,7 +78,7 @@ p {
   font-weight: 100;
 }
 
-#addText {
+.addText {
   font-family: myriad-pro, sans-serif;
   font-size: 20px;
 }
@@ -117,11 +117,11 @@ p {
 
 }
 
-#btnNav:hover, #logoutBtn:hover, #buttonDiv:hover, #guestBtn:hover, #orderHistoryLink:hover, #editLink:hover, #payBtn:hover {
+#btnNav:hover, #logoutBtn:hover, #buttonDiv:hover, #guestBtn:hover, #editLink:hover, #payBtn:hover, #orderHistoryLink:hover, #searchBtn:hover {
   background-color: #fff;
 }
 
-#btnNav:active, #logoutBtn:active, #buttonDiv:active, #orderHistoryLink:hover, #guestBtn:active, #editLink:hover, #payBtn:hover {
+#btnNav:active, #logoutBtn:active, #buttonDiv:active, #guestBtn:active, #editLink:active, #payBtn:active, #orderHistoryLink:active, #searchBtn:active {
   box-shadow: #422800 2px 2px 0 0;
   transform: translate(2px, 2px);
 }
@@ -190,10 +190,6 @@ span {
     text-transform: capitalize;
 }
 
-.badge:hover {
-    color: gray;
-}
-
 pre {
     font-family: myriad-pro,sans-serif;
     font-size: 20px;
@@ -226,11 +222,22 @@ a {
   color: black;
 }
 
+.targetStores li, .targetItems li {
+  display: inline;
+  float: left;
+  margin: 20px;
+}
+
+.storeInfo, .itemInfo, .store, .name, .price, .itemId, .video {
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
 a:hover {
   color:black;
 }
 
-#payBtn, #checkoutBtn, #editLink, #orderHistoryLink, #editBtn, #logoutBtn, #searchBtn {
+#payBtn, #checkoutBtn, #editLink, #editBtn, #logoutBtn, #searchBtn, #orderHistoryLink {
     font-family: myriad-pro,sans-serif;
     background-color: #fbeee0;
     border: 2px solid #422800;
@@ -251,6 +258,29 @@ a:hover {
     justify-content: center; 
     align-items: center;
     margin-bottom: 100px;
+}
+
+ #editLink, #editBtn, #orderHistoryLink {
+  font-family: myriad-pro,sans-serif;
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 10px;
+  line-height: 25px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  justify-content: center; 
+  align-items: center;
+  margin: 15px;
 }
 
 #guest{
@@ -291,4 +321,10 @@ a:hover {
 
 .row {
     justify-content: center;
+}
+
+#orderList{
+  float: left;
+  margin: 20px;
+  text-align: center;
 }
