@@ -6,7 +6,7 @@
         <div class="allCarts">
             <div id="orderList" *ngFor="let carts of allCarts">
                 <h3>Ordered on {{carts.timeStamp.substring(0,10)}}</h3>
-                <p>TOTAL: ${{carts.cartTotal}}</p>
+                <p>TOTAL: ${{carts.cartTotal.toFixed(2)}}</p>
                 <ul class="cartItems">
                     <li *ngFor="let items of carts.items">
                         <img src="{{items.itemImage}}" alt="Picture of {{items.itemName}}">
