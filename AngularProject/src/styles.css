@@ -324,3 +324,7 @@ a:hover {
   margin: 20px;
   text-align: center;
 }
+
+#orderList li {
+  list-style: none;
+}
