@@ -6,8 +6,7 @@
         <ul class="items">
             <li *ngFor="let item of items">
                 <span>
-                    <img src="{{item.itemImage}}" alt="Picture of {{item.itemName}}">
-                <a routerLink="/detail/{{item.itemId}}"><div id="itemName" class="badge">{{item.itemName}}</div></a>
+                    <img src="{{item.itemImage}}" alt="Picture of {{item.itemName}}"><div id="itemName" class="badge">{{item.itemName}}</div>
                 <div id="cartItems">
                     <label for="item-qty">Qty: </label>
                     <input type="number" min="1" max="100" id="item-qty" [(ngModel)]="item.itemQty" 
