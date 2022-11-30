@@ -223,15 +223,11 @@ a {
 }
 
 .targetStores li, .targetItems li {
-  display: inline;
+  list-style: none;
   float: left;
   margin: 20px;
 }
 
-.storeInfo, .itemInfo, .store, .name, .price, .itemId, .video {
-  margin-left: 3%;
-  margin-right: 3%;
-}
 
 a:hover {
   color:black;
