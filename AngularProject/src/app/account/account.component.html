@@ -1,5 +1,4 @@
 <div id="Page">
-    
     <div *ngIf="loggedIn">
         <h1>Hello, {{currentUser.Name}}</h1>
         <p>{{currentUser.Name}}</p>
@@ -8,11 +7,10 @@
             <button id="editLink">
                 <a routerLink="/EditAccount">Edit Account</a>
             </button>
-            <button id="orderHistoryLink">
+            <button id="orderHistoryLink" style="margin-left: 2%;">
                 <a routerLink="/OrderHistory">Order History</a>
             </button>
         </div>
         <app-login></app-login>
     </div>
 </div>
-
