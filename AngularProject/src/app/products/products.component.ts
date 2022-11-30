@@ -42,6 +42,7 @@ export class ProductsComponent implements OnInit {
 
   // Target functions
   getTargetItems(storeId: string, keyword: string, userId: string): void{
+    console.log(`storeId: ${storeId} | keyword: ${keyword} | userId: ${userId}`)
     this.targetService.getItems(storeId, keyword, userId)
     .subscribe(targetItems => this.targetItems = targetItems);
     console.log(this.targetItems);
@@ -57,7 +58,7 @@ export class ProductsComponent implements OnInit {
     this.targetService.findItems(storeId, keyword, userId)
     setTimeout( () => {
       this.getTargetItems(storeId, keyword, userId);
-    }, 4000)
+    }, 2000)
   }
 
   selectItem(item: TargetItem){
