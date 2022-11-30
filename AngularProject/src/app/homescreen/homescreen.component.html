@@ -1,16 +1,14 @@
 <div id="Page">
-  
-  
   <div *ngIf="loggedIn">
     <h1>Hello, {{currentUser.Name}}</h1>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-3">
           <label>What's the recipients zip code?</label>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-2" style="margin-top: 1%;">
           <input #zipcodeInput type="text" placeholder="Type a zip (ex: 98007)">
         </div>
       </div>
@@ -19,13 +17,13 @@
     <button id="searchBtn" (click)="findStores()">Find Stores!</button>  
     <br><br>
  <br>
-
     
     <h2>Nearby Stores</h2>
+    <br>
     <ul class="targetStores">
       <li *ngFor="let targetStore of targetStores">
         <div class="storeInfo" routerLink="/Products" (click)="selectStore(targetStore.storeId)">
-          <div><img src="../../assets/targetLogo.jpeg" alt="target_logo"></div>
+          <div><img src="../../assets/target.jpg" alt="target_logo"></div>
           <div class="store">Location: {{targetStore.locationName}}</div>
           <div class="store">Distance: {{targetStore.distance}}</div>
           <div class="store">Phone: {{targetStore.phoneNumber}}</div>
