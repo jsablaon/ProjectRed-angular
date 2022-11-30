@@ -61,7 +61,7 @@ export class HomescreenComponent implements OnInit {
     // should call getTargetStores()
     setTimeout( () => {
       this.getTargetStores(zipcode, userId);
-    }, 10000)
+    }, 2000)
 
   }
 

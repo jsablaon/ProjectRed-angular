@@ -57,7 +57,7 @@ export class ProductsComponent implements OnInit {
     this.targetService.findItems(storeId, keyword, userId)
     setTimeout( () => {
       this.getTargetItems(storeId, keyword, userId);
-    }, 10000)
+    }, 4000)
   }
 
   selectItem(item: TargetItem){
