@@ -1,5 +1,5 @@
 <div id="Page">
-  <div *ngIf="loggedIn">
+  <div *ngIf="loggedIn" style="margin: 5%;">
     <h1>Hello, {{currentUser.Name}}</h1>
     <div class="container-fluid">
       <div class="row">
@@ -15,8 +15,8 @@
     </div>
     <br><br>
     <button id="searchBtn" (click)="findStores()">Find Stores!</button>  
-    <br><br>
 
+    <div style="margin: 2%;">
     <ul class="targetStores">
       <li *ngFor="let targetStore of targetStores">
         <div class="storeInfo" routerLink="/Products" (click)="selectStore(targetStore.storeId)">
@@ -25,9 +25,10 @@
           <div class="store">Distance: {{targetStore.distance}}</div>
           <div class="store">Phone: {{targetStore.phoneNumber}}</div>
           <div id="storeId">StoreId: {{targetStore.storeId}}</div>
-          <button id="searchBtn" routerLink="/Products" (click)="selectStore(targetStore.storeId)">Go To Store</button>
+          <button id="storeBtn" routerLink="/Products" (click)="selectStore(targetStore.storeId)">Go To Store</button>
         </div>
       </li>
     </ul>
+    </div>
   </div>
 </div>
