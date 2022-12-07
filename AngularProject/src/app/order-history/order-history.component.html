@@ -1,1 +1,21 @@
-<p>order-history works!</p>
+<div id="Page">
+
+
+    <div *ngIf="loggedIn">
+        <h1>Previous Orders for {{currentUser.Name}}</h1>
+        <div class="allCarts">
+            <div id="orderList" *ngFor="let carts of allCarts">
+                <h3>Ordered on {{carts.timeStamp.substring(0,10)}}</h3>
+                <p>TOTAL: ${{carts.cartTotal.toFixed(2)}}</p>
+                <ul class="cartItems">
+                    <li *ngFor="let items of carts.items">
+                        <img src="{{items.itemImage}}" alt="Picture of {{items.itemName}}">
+                        <p style="font-style:italic; font-weight:lighter; font-size:15px;">{{items.itemName}} x{{items.itemQty}}</p>
+                    </li>
+                </ul> 
+                <br><br>     
+            </div> 
+        </div>
+    </div>
+
+</div>

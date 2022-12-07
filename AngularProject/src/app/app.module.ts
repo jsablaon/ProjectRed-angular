@@ -19,6 +19,7 @@ import { EditAccountComponent } from './edit-account/edit-account.component';
 import { TargetService } from './item.service';
 import { ItemListComponent } from './item-list/item-list.component';
 import { StoreSearchComponent } from './store-search/store-search.component';
+import { ProductsComponent } from './products/products.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { StoreSearchComponent } from './store-search/store-search.component';
     CheckoutComponent,
     EditAccountComponent,
     ItemListComponent,
-    StoreSearchComponent
+    StoreSearchComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

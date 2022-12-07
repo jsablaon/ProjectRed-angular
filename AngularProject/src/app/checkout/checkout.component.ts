@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-
-import { CartItem, Carts } from '../item';
-import { Item } from '../item';
+import { CartItem, Carts, Item } from '../item';
 import { ItemService } from '../item.service';
 import {v4 as uuidv4} from 'uuid';
 
@@ -35,39 +33,44 @@ export class CheckoutComponent implements OnInit {
 
 
   items: CartItem[] = [];
-  subtotal:number = 0;
+  total: number = 0;
   loggedIn: boolean = false;
   currentUser: string = 'Please Log In';
 
   constructor(private itemService: ItemService) { }
 
   ngOnInit(): void {
-    this.getItems();
-
+    
     if(sessionStorage.getItem('ID:') === null){
       this.loggedIn = false;
     }
     else {
       this.loggedIn = true;
       this.currentUser = 'Checkout';
+      this.getItems();
+
     }
   }
 
   getItems(): void {
-    this.items = [];
-    this.subtotal = 0;
-    this.itemService.getItems().subscribe((items): CartItem[] => {
-      
-      //calculates subtotal
-      items.forEach((item) => {
-        if(item.userId == sessionStorage.getItem('ID:')){
-          this.items.push(item);
-          this.subtotal += item.itemPrice * item.itemQty;
-        }
-      });
-
-      return this.items;
+    this.itemService.getItems().subscribe((cartItems) => {
+      this.items = cartItems.filter((i) => i.userId == sessionStorage.getItem('ID:'));
+      this.updateSub();
     });
+    
+  }
+
+  updateSub(): void {
+    let subtotal: number = 0;
+    let shipping: number = 0;
+    this.items.forEach((pItem) => {
+      subtotal += pItem.itemPrice * pItem.itemQty;
+    });
+    if(this.items.length != 0){
+      shipping = 15.55;
+    }
+    this.total = Number((subtotal * 1.095 + shipping).toFixed(2));
+    
   }
 
   finalizeCheckout(): void{
@@ -143,6 +146,8 @@ export class CheckoutComponent implements OnInit {
     let finalCart: Carts = {
         cartId: uuidv4(),
         userId: sessionStorage.getItem('ID:'),
+        timeStamp: new Date().toISOString(),
+        cartTotal: this.total,
         billingAddress: billingInfo,
         shippingAddress: shippingInfo,
         paymentInfo: paymentInfo,
@@ -151,6 +156,9 @@ export class CheckoutComponent implements OnInit {
       //console.log(finalCart);
       this.itemService.addCart(finalCart).subscribe();
 
+      for (let i=0; i < this.items.length; i++){
+        this.itemService.deleteItem(this.items[i]).subscribe();
+      }
   }
 
 }

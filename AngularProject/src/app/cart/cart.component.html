@@ -6,12 +6,11 @@
         <ul class="items">
             <li *ngFor="let item of items">
                 <span>
-                    <img src="{{item.itemImage}}" alt="Picture of {{item.itemName}}">
-                <a routerLink="/detail/{{item.itemId}}"><div id="itemName" class="badge">{{item.itemName}}</div></a>
+                    <img src="{{item.itemImage}}" alt="Picture of {{item.itemName}}"><div id="itemName" class="badge">{{item.itemName}}</div>
                 <div id="cartItems">
                     <label for="item-qty">Qty: </label>
                     <input type="number" min="1" max="100" id="item-qty" [(ngModel)]="item.itemQty" 
-                    placeholder="Item qty" (ngModelChange)="updateItem(item);"/>
+                    placeholder="Item qty" (ngModelChange)="updateItem(item)"/>
                     <button (click)="delete(item)">Remove Item</button><br>  
                     <p><em>Price: ${{(item.itemPrice * item.itemQty).toFixed(2)}}</em></p>
                     <br>     
@@ -30,12 +29,12 @@
                 <div id="endCost" class="col-2">
                     <p> ${{(subtotal * .095).toFixed(2)}}</p>
                     <p> ${{subtotal.toFixed(2)}}</p>
-                    <p> $15.55</p>
+                    <p> ${{shipping.toFixed(2)}}</p>
                 </div>
             </div>
         </div>
         <br>
-        <strong><p style="font-size:30px;">Total: ${{(subtotal * 1.095 + 15.55).toFixed(2)}}</p></strong>
+        <strong><p style="font-size:30px;">Total: ${{(subtotal * 1.095 + shipping).toFixed(2)}}</p></strong>
 
     <button id="checkoutBtn" routerLink="/Checkout">Checkout</button>
     </div>

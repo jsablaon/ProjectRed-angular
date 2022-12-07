@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartItem } from '../item';
-
-import { Item } from '../item';
+import { CartItem, Item } from '../item';
 import { ItemService } from '../item.service'
 
 @Component({
@@ -13,8 +11,8 @@ import { ItemService } from '../item.service'
 
 export class CartComponent implements OnInit {
   items: CartItem[] = [];
-  fakeItem: CartItem;
   subtotal: number = 0;
+  shipping: number = 0;
   loggedIn: boolean = false;
   currentUser: string = 'Please Log In';
 
@@ -24,73 +22,56 @@ export class CartComponent implements OnInit {
     // let fakeItem = {
     //   userId: sessionStorage.getItem('ID:'),
     //   storeId: '12633',
-    //   itemId: '2627',
+    //   itemId: '2553373',
     //   itemQty: 1,
-    //   itemName: 'string',
-    //   itemPrice: 2.94,
+    //   itemName:'diwe',
+    //   itemPrice: 2.00,
     //   itemImage: 'https://www.w3schools.com/images/w3schools_green.jpg',
     //   itemVideo: 'a',
     // };
     // this.itemService.addItem(fakeItem).subscribe();
-    this.getItems();
-    
-    if(sessionStorage.getItem('ID:') === null){
+
+    if (sessionStorage.getItem('ID:') === null) {
       this.loggedIn = false;
     }
     else {
       this.loggedIn = true;
       this.currentUser = 'My Cart';
-
+      this.getItems();
     }
   }
-
 
   getItems(): void {
-    
-    this.subtotal = 0;
-    this.itemService.getItems().subscribe((cartItems): CartItem[] => {
-      
-      //calculates subtotal
-      cartItems.forEach((item) => {
-        if(item.userId === sessionStorage.getItem('ID:')){
-          this.items.push(item);
-          this.subtotal += item.itemPrice * item.itemQty;
-          //console.log(this.items);
-        }
-        
-      });
-
-      return this.items;
+    this.itemService.getItems().subscribe((cartItems) => {
+      this.items = cartItems.filter((i) => i.userId == sessionStorage.getItem('ID:'));
+      this.updateSub();
     });
+    
   }
 
-  updateItem(item: CartItem): void{
+  updateSub(): void {
     this.subtotal = 0;
-    if(item){
-      this.itemService.updateItem(item).subscribe();
+    this.shipping = 0;
+    this.items.forEach((pItem) => {
+      this.subtotal += pItem.itemPrice * pItem.itemQty;
+    });
+    if(this.items.length != 0){
+      this.shipping = 15.55;
     }
-
-    this.itemService.getItems().subscribe((cartItems): CartItem[] => {
-      //calculates subtotal
-      cartItems.forEach((item) => {
-        if(item.userId === sessionStorage.getItem('ID:')){
-          this.subtotal += item.itemPrice * item.itemQty;
-          //console.log(this.items);
-        }
-        
-      });
-
-      return this.items;
-    });        
-
-    //this.getItems();
   }
 
-  delete(item: CartItem): void{
-    //console.log("read");
-    this.items = this.items.filter(h => h !== item);
-    this.itemService.deleteItem(item.itemId).subscribe();
-    this.getItems();
+  updateItem(item: CartItem): void {
+    //update item
+    this.itemService.updateItem(item).subscribe();
+    this.updateSub();
+  }
+
+  delete(item: CartItem): void {
+    this.itemService.deleteItem(item).subscribe();
+
+    let newList = this.items.filter(data => data != item);
+    this.items = newList;
+    this.updateSub();
   }
 
 }
